@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arabiata Restaurant Menu – CampuEats</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0ffe0, #f7fff7);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header {
+      background: linear-gradient(135deg, #8B0000, #DC143C);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-circle {
+      width: 80px;
+      height: 80px;
+      background: #FF0000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .logo-letter {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #FFFFFF;
+      font-family: Arial, sans-serif;
+    }
+
+    .logo-text-english {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #000000;
+      font-family: Arial, sans-serif;
+      margin-bottom: 5px;
+    }
+
+    .logo-text-arabic {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #000000;
+      font-family: 'Arial Unicode MS', Arial, sans-serif;
+    }
+
+    .main-content {
+      padding: 30px;
+    }
+
+    .menu-category {
+      margin-bottom: 40px;
+    }
+
+    .menu-category h2 {
+      color: #8B0000;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #8B0000;
+      padding-bottom: 10px;
+    }
+
+    .menu-item {
+      background-color: white;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 15px;
+      transition: all 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .menu-item:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+
+    .item-info {
+      margin-bottom: 15px;
+    }
+
+    .item-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .item-description {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .item-price {
+      color: #8B0000;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .item-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quantity-btn {
+      background: #8B0000;
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .quantity-btn:hover {
+      background: #A52A2A;
+      transform: scale(1.1);
+    }
+
+    .quantity-display {
+      font-weight: bold;
+      color: #333;
+      min-width: 30px;
+      text-align: center;
+    }
+
+    .add-to-cart-btn {
+      background: linear-gradient(135deg, #8B0000, #DC143C);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+      margin-left: auto;
+    }
+
+    .add-to-cart-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
+    }
+
+    .add-to-cart-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: #4CAF50;
+      color: white;
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: all 0.3s;
+      margin-top: 20px;
+    }
+
+    .back-btn:hover {
+      background: #388e3c;
+      transform: translateY(-2px);
+    }
+
+    /* Floating Cart Styles */
+    .floating-cart {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #8B0000;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: all 0.3s;
+    }
+
+    .floating-cart:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+
+    .cart-icon {
+      font-size: 24px;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #ff4444;
+      color: white;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    /* Cart Modal Styles */
+    .cart-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .cart-modal.show {
+      display: flex;
+    }
+
+    .cart-content {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #8B0000;
+    }
+
+    .cart-title {
+      color: #8B0000;
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    .close-cart {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .close-cart:hover {
+      color: #8B0000;
+    }
+
+    .cart-items {
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-item-info {
+      flex: 1;
+    }
+
+    .cart-item-name {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .cart-item-price {
+      color: #8B0000;
+      font-weight: bold;
+    }
+
+    .cart-item-quantity {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cart-quantity-btn {
+      background: #8B0000;
+      color: white;
+      border: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cart-quantity-btn:hover {
+      background: #A52A2A;
+    }
+
+    .cart-total {
+      border-top: 2px solid #8B0000;
+      padding-top: 20px;
+      text-align: center;
+    }
+
+    .cart-total h3 {
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .checkout-btn {
+      background: linear-gradient(135deg, #8B0000, #DC143C);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+    }
+
+    .checkout-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
+    }
+
+    .checkout-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .empty-cart {
+      text-align: center;
+      color: #666;
+      font-style: italic;
+      padding: 20px;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .floating-cart {
+      animation: float 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <div class="logo-container">
+        <div class="logo">
+          <div class="logo-circle">
+            <div class="logo-letter">a</div>
+          </div>
+          <div class="logo-text-english">arabiata</div>
+          <div class="logo-text-arabic">أرابياتا</div>
+        </div>
+      </div>
+      <h1>A-Arabiata Restaurant</h1>
+      <p>Authentic Egyptian breakfast and traditional cuisine!</p>
+    </div>
+
+    <div class="main-content">
+      <div class="menu-category">
+        <h2>🌅 Egyptian Breakfast</h2>
+        
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Foul Medames</div>
+            <div class="item-description">Traditional Egyptian fava beans with olive oil, lemon, and spices</div>
+            <div class="item-price">EGP 25</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('foul-medames', -1)">-</button>
+              <span class="quantity-display" id="foul-medames-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('foul-medames', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('foul-medames', 'Foul Medames', 25)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Falafel</div>
+            <div class="item-description">Crispy chickpea fritters with tahini sauce</div>
+            <div class="item-price">EGP 20</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('falafel', -1)">-</button>
+              <span class="quantity-display" id="falafel-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('falafel', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('falafel', 'Falafel', 20)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Taameya (Egyptian Falafel)</div>
+            <div class="item-description">Fava bean falafel with herbs and spices</div>
+            <div class="item-price">EGP 22</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('taameya', -1)">-</button>
+              <span class="quantity-display" id="taameya-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('taameya', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('taameya', 'Taameya (Egyptian Falafel)', 22)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Shakshuka</div>
+            <div class="item-description">Eggs poached in tomato sauce with peppers and spices</div>
+            <div class="item-price">EGP 35</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('shakshuka', -1)">-</button>
+              <span class="quantity-display" id="shakshuka-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('shakshuka', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('shakshuka', 'Shakshuka', 35)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h2>🥙 Egyptian Sandwiches</h2>
+        
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Falafel Sandwich</div>
+            <div class="item-description">Falafel with tahini, lettuce, and tomatoes in pita bread</div>
+            <div class="item-price">EGP 15</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('falafel-sandwich', -1)">-</button>
+              <span class="quantity-display" id="falafel-sandwich-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('falafel-sandwich', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('falafel-sandwich', 'Falafel Sandwich', 15)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Foul Sandwich</div>
+            <div class="item-description">Fava beans with olive oil and lemon in pita bread</div>
+            <div class="item-price">EGP 12</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('foul-sandwich', -1)">-</button>
+              <span class="quantity-display" id="foul-sandwich-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('foul-sandwich', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('foul-sandwich', 'Foul Sandwich', 12)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Taameya Sandwich</div>
+            <div class="item-description">Egyptian falafel with tahini and vegetables</div>
+            <div class="item-price">EGP 18</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('taameya-sandwich', -1)">-</button>
+              <span class="quantity-display" id="taameya-sandwich-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('taameya-sandwich', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('taameya-sandwich', 'Taameya Sandwich', 18)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h2>🥘 Main Dishes</h2>
+        
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Koshari</div>
+            <div class="item-description">Egyptian national dish: rice, lentils, pasta with tomato sauce and crispy onions</div>
+            <div class="item-price">EGP 30</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('koshari', -1)">-</button>
+              <span class="quantity-display" id="koshari-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('koshari', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('koshari', 'Koshari', 30)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Molokhia</div>
+            <div class="item-description">Traditional Egyptian green soup with rice and chicken</div>
+            <div class="item-price">EGP 40</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('molokhia', -1)">-</button>
+              <span class="quantity-display" id="molokhia-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('molokhia', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('molokhia', 'Molokhia', 40)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Mahshi</div>
+            <div class="item-description">Stuffed vegetables (zucchini, eggplant, grape leaves) with rice and herbs</div>
+            <div class="item-price">EGP 35</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('mahshi', -1)">-</button>
+              <span class="quantity-display" id="mahshi-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('mahshi', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('mahshi', 'Mahshi', 35)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h2>🥗 Salads & Sides</h2>
+        
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Tahini Salad</div>
+            <div class="item-description">Fresh vegetables with tahini dressing</div>
+            <div class="item-price">EGP 15</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('tahini-salad', -1)">-</button>
+              <span class="quantity-display" id="tahini-salad-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('tahini-salad', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('tahini-salad', 'Tahini Salad', 15)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Baba Ganoush</div>
+            <div class="item-description">Smoked eggplant dip with tahini and olive oil</div>
+            <div class="item-price">EGP 20</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('baba-ganoush', -1)">-</button>
+              <span class="quantity-display" id="baba-ganoush-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('baba-ganoush', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('baba-ganoush', 'Baba Ganoush', 20)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Hummus</div>
+            <div class="item-description">Creamy chickpea dip with tahini and olive oil</div>
+            <div class="item-price">EGP 18</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('hummus', -1)">-</button>
+              <span class="quantity-display" id="hummus-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('hummus', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('hummus', 'Hummus', 18)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h2>🥤 Beverages</h2>
+        
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Egyptian Tea</div>
+            <div class="item-description">Traditional black tea with mint</div>
+            <div class="item-price">EGP 8</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('egyptian-tea', -1)">-</button>
+              <span class="quantity-display" id="egyptian-tea-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('egyptian-tea', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('egyptian-tea', 'Egyptian Tea', 8)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Sahlab</div>
+            <div class="item-description">Traditional Egyptian hot drink with orchid powder and nuts</div>
+            <div class="item-price">EGP 12</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('sahlab', -1)">-</button>
+              <span class="quantity-display" id="sahlab-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('sahlab', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('sahlab', 'Sahlab', 12)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Karkadeh</div>
+            <div class="item-description">Hibiscus tea, served hot or cold</div>
+            <div class="item-price">EGP 10</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('karkadeh', -1)">-</button>
+              <span class="quantity-display" id="karkadeh-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('karkadeh', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('karkadeh', 'Karkadeh', 10)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <a href="outside (1).html" class="back-btn">⬅ Back to Restaurants</a>
+    </div>
+  </div>
+
+  <!-- Floating Cart Icon -->
+  <div class="floating-cart" onclick="openCart()">
+    <i class="fas fa-shopping-cart cart-icon"></i>
+    <div class="cart-badge" id="cart-badge">0</div>
+  </div>
+
+  <!-- Cart Modal -->
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-content">
+      <div class="cart-header">
+        <h2 class="cart-title"><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+        <button class="close-cart" onclick="closeCart()">&times;</button>
+      </div>
+      <div id="cart-items" class="cart-items">
+        <div class="empty-cart">Your cart is empty</div>
+      </div>
+      <div class="cart-total">
+        <h3>Total: <span id="cart-total">EGP 0</span></h3>
+        <button class="checkout-btn" id="checkout-btn" onclick="checkout()" disabled>Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let cart = [];
+    let quantities = {
+      'foul-medames': 1,
+      'falafel': 1,
+      'taameya': 1,
+      'shakshuka': 1,
+      'falafel-sandwich': 1,
+      'foul-sandwich': 1,
+      'taameya-sandwich': 1,
+      'koshari': 1,
+      'molokhia': 1,
+      'mahshi': 1,
+      'tahini-salad': 1,
+      'baba-ganoush': 1,
+      'hummus': 1,
+      'egyptian-tea': 1,
+      'sahlab': 1,
+      'karkadeh': 1
+    };
+
+    function changeQuantity(itemId, change) {
+      const newQty = quantities[itemId] + change;
+      if (newQty >= 1 && newQty <= 10) {
+        quantities[itemId] = newQty;
+        document.getElementById(itemId + '-qty').textContent = newQty;
+      }
+    }
+
+    function addToCart(itemId, itemName, price) {
+      const quantity = quantities[itemId];
+      const totalPrice = price * quantity;
+
+      const cartItem = {
+        name: itemName,
+        quantity: quantity,
+        price: price,
+        total: totalPrice
+      };
+
+      cart.push(cartItem);
+      updateCartDisplay();
+      resetQuantity(itemId);
+      
+      // Show "Added!" feedback
+      const btn = event.target;
+      const originalText = btn.textContent;
+      btn.textContent = 'Added!';
+      btn.style.background = '#4CAF50';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+      }, 1000);
+    }
+
+    function resetQuantity(itemId) {
+      quantities[itemId] = 1;
+      document.getElementById(itemId + '-qty').textContent = '1';
+    }
+
+    function updateCartDisplay() {
+      const cartContainer = document.getElementById('cart-items');
+      const checkoutBtn = document.getElementById('checkout-btn');
+      const cartBadge = document.getElementById('cart-badge');
+      
+      // Update cart badge
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartBadge.textContent = totalItems;
+      cartBadge.style.display = totalItems > 0 ? 'flex' : 'none';
+      
+      if (cart.length === 0) {
+        cartContainer.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+        checkoutBtn.disabled = true;
+        return;
+      }
+
+      let cartHTML = '';
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        cartHTML += `
+          <div class="cart-item">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-details">Qty: ${item.quantity}</div>
+            <div class="cart-item-price">EGP ${item.total}</div>
+            <button onclick="removeFromCart(${index})" style="background: #f44336; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-top: 5px;">Remove</button>
+          </div>
+        `;
+        total += item.total;
+      });
+
+      cartContainer.innerHTML = cartHTML;
+      document.getElementById('cart-total').textContent = `EGP ${total}`;
+      checkoutBtn.disabled = false;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartDisplay();
+    }
+
+    function openCart() {
+      document.getElementById('cart-modal').classList.add('show');
+    }
+
+    function closeCart() {
+      document.getElementById('cart-modal').classList.remove('show');
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      
+      const total = cart.reduce((sum, item) => sum + item.total, 0);
+      alert(`Order placed successfully! Total: EGP ${total}\nThank you for choosing Arabiata!`);
+      
+      // Clear cart
+      cart = [];
+      updateCartDisplay();
+      closeCart();
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('cart-modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeCart();
+      }
+    });
+  </script>
+
+</body>
+</html> 

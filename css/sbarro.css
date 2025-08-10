@@ -1,0 +1,871 @@
+/* Universal Box-Sizing and Basic Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body, h1, h2, h3, p, ul, ol, li, figure, figcaption, blockquote, dl, dd {
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* General Body and Container Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f0f2f5; /* Fallback light grey background */
+    color: #333;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: transparent; /* No overlay on the wrapper itself */
+    box-shadow: 0 0 20px rgba(0,0,0,0.1); /* Optional: subtle shadow for the content area */
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.sbarro-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.sbarro-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sbarro-logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.sbarro-main-logo {
+    height: 55px;
+    width: auto;
+    border-radius: 8px; /* Slightly less rounded than TBS logo */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sbarro-shop-text {
+    margin-left: 12px;
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #e30713; /* Sbarro Red */
+    letter-spacing: 0.5px;
+}
+
+.sbarro-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.sbarro-nav .nav-link {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    font-size: 1.15em;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.sbarro-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: #e30713; /* Sbarro Red */
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+.sbarro-nav .nav-link:hover,
+.sbarro-nav .nav-link.active {
+    color: #e30713; /* Sbarro Red */
+    transform: translateY(-2px);
+}
+
+.sbarro-nav .nav-link:hover::after,
+.sbarro-nav .nav-link.active::after {
+    width: 100%;
+}
+
+/* Cart Link Specific Styling */
+.sbarro-nav .cart-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: #e30713; /* Sbarro Red */
+    font-size: 1.5em;
+    padding: 5px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.sbarro-nav .cart-link:hover {
+    background-color: #f5f5f5;
+}
+
+.sbarro-nav .cart-link .cart-count {
+    background-color: #4CAF50; /* Green for count */
+    color: #fff;
+    font-size: 0.75em;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 3px 7px;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    min-width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.sbarro-nav .cart-link .cart-count.hidden {
+    display: none;
+}
+
+/* Sbarro Entry Background Section */
+.sbarro-entry-background {
+    width: 100%;
+    height: 400px; /* Adjusted height for better image display */
+    background-size: cover; /* Cover the area */
+    background-position: center 30%; /* Adjust vertical position to show more of the content */
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden; /* Ensures content doesn't spill out */
+}
+
+.sbarro-entry-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
+    z-index: 1;
+}
+
+.sbarro-entry-background .entry-overlay {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.sbarro-entry-background h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 4em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    color: #ffffff; /* White text for contrast */
+}
+
+.sbarro-entry-background p {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+    color: #f0f0f0; /* Slightly off-white for subtitle */
+}
+
+.order-now-btn {
+    display: inline-block;
+    background-color: #e30713; /* Sbarro Red */
+    color: #fff;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.order-now-btn:hover {
+    background-color: #c00510; /* Darker Sbarro Red */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+
+/* Promotional Banner (if ever re-enabled) */
+.promo-banner {
+    padding: 0;
+    text-align: center;
+    overflow: hidden;
+    margin-bottom: 40px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-radius: 15px;
+}
+
+.promo-banner.hidden {
+    display: none;
+}
+
+.full-width-promo-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+/* Menu Section Layout */
+.menu-section {
+    padding: 40px 0;
+    background-color: #f0f2f5; /* Light grey background for menu section */
+    min-height: 80vh;
+}
+
+.menu-section.hidden {
+    display: none;
+}
+
+.menu-content-area {
+    display: flex;
+    gap: 35px;
+    align-items: flex-start;
+}
+
+/* Left Sidebar Navigation */
+.left-sidebar {
+    flex: 0 0 280px;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 90px;
+    align-self: flex-start;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+}
+
+.left-sidebar-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.left-sidebar-nav li {
+    margin-bottom: 12px;
+}
+
+.left-sidebar-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #666;
+    padding: 15px 18px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    font-weight: 500;
+    font-size: 1.05em;
+}
+
+.left-sidebar-nav a:hover {
+    background-color: #fff0f0; /* Very light red background on hover */
+    color: #e30713;
+    transform: translateX(5px);
+}
+
+.left-sidebar-nav a.active {
+    background-color: #e30713; /* Sbarro Red for active */
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(227, 7, 19, 0.3); /* Shadow for active state */
+}
+
+.left-sidebar-nav a .category-icon-bg {
+    background-color: #f9f9f9;
+    color: #e30713; /* Sbarro Red */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 18px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 1.2em;
+}
+
+.left-sidebar-nav a:hover .category-icon-bg {
+    background-color: #fff;
+    color: #e30713;
+}
+
+.left-sidebar-nav a.active .category-icon-bg {
+    background-color: #fff;
+    color: #e30713;
+}
+
+.left-sidebar-nav a .arrow-icon {
+    margin-left: auto;
+    font-size: 0.9em;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+.left-sidebar-nav a.active .arrow-icon {
+    transform: rotate(90deg);
+    opacity: 1;
+    color: #fff;
+}
+
+/* Menu Items Display */
+.menu-items-display {
+    flex: 1;
+    min-width: 0;
+    background-color: #ffffff; /* Explicit background for menu items area */
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    padding: 25px;
+}
+
+
+.menu-category {
+    margin-bottom: 40px;
+    padding-top: 20px;
+    display: none; /* Hide categories by default */
+}
+
+.menu-category.active {
+    display: block; /* Only active category is displayed */
+}
+
+.category-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: left;
+    position: relative;
+    padding-bottom: 15px;
+    font-weight: 700;
+}
+
+.category-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    height: 5px;
+    background-color: #e30713; /* Sbarro Red */
+    border-radius: 3px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.menu-item-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.menu-item-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.menu-item-card .item-details {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item-card .item-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5em;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.menu-item-card .item-description {
+    font-size: 1em;
+    color: #777;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.menu-item-card .item-price-add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.menu-item-card .item-price {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #e30713; /* Sbarro Red */
+    letter-spacing: -0.5px;
+}
+
+.menu-item-card .add-to-cart-btn {
+    background-color: #e30713; /* Sbarro Red */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.menu-item-card .add-to-cart-btn:hover {
+    background-color: #c00510; /* Darker Sbarro Red */
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.menu-item-card .add-to-cart-btn.disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.7;
+    transform: none;
+}
+
+/* Placeholder card styles */
+.menu-item-card.placeholder {
+    opacity: 0.6;
+    box-shadow: none;
+    border: 2px dashed #d0d0d0;
+    text-align: center;
+    background-color: #fefefe;
+}
+
+.menu-item-card.placeholder .item-name {
+    color: #a0a0a0;
+}
+
+.menu-item-card.placeholder .item-description {
+    color: #c0c0c0;
+}
+
+/* Confirmation Message Box */
+.confirmation-message {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-size: 1.1em;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    text-align: center;
+    min-width: 250px;
+}
+
+.confirmation-message.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* --- Checkout Page Specific Styles (for shared checkout.html) --- */
+/* These styles will apply if checkout.html links to sbarro.css */
+
+.checkout-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.checkout-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.checkout-header img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.checkout-header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2em;
+    color: #e30713; /* Sbarro Red */
+    margin: 0;
+}
+
+.checkout-header p {
+    font-size: 1.1em;
+    color: #666;
+    margin: 5px 0 0;
+}
+
+.section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6em;
+    color: #333;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.order-item .item-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 1px solid #ddd;
+}
+
+.order-item .item-details {
+    flex-grow: 1;
+}
+
+.order-item .item-details h4 {
+    margin: 0 0 5px;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.order-item .item-details p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #888;
+}
+
+.order-item .item-total-price {
+    font-weight: bold;
+    color: #e30713; /* Sbarro Red */
+    font-size: 1.1em;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid #f0f0f0;
+}
+
+.summary-row.total {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #e30713; /* Sbarro Red */
+    border-top: 2px solid #e30713; /* Sbarro Red */
+    margin-top: 15px;
+    padding-top: 20px;
+}
+
+.place-order-btn, .home-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #e30713; /* Sbarro Red */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 25px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.place-order-btn:hover, .home-btn:hover {
+    background-color: #c00510; /* Darker Sbarro Red */
+    transform: translateY(-2px);
+}
+
+.place-order-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.order-confirmation {
+    text-align: center;
+    padding: 50px 20px;
+    display: none;
+}
+
+.order-confirmation h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #4CAF50;
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.order-confirmation p {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.empty-checkout {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.empty-checkout h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2em;
+    color: #e30713; /* Sbarro Red */
+    margin-bottom: 15px;
+}
+
+.empty-checkout p {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.empty-checkout a {
+    color: #e30713; /* Sbarro Red */
+    text-decoration: underline;
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .menu-content-area {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .left-sidebar {
+        width: 100%;
+        position: static;
+        top: auto;
+    }
+
+    .sbarro-header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .sbarro-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .checkout-container {
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .checkout-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .checkout-header img {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .sbarro-entry-background {
+        height: 350px; /* Further adjusted height for better fit */
+    }
+    .sbarro-entry-background h1 {
+        font-size: 3em;
+    }
+    .sbarro-entry-background p {
+        font-size: 1.5em;
+    }
+    .order-now-btn {
+        font-size: 1.1em;
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sbarro-main-logo {
+        height: 40px;
+    }
+
+    .sbarro-shop-text {
+        font-size: 1.2em;
+    }
+
+    .sbarro-nav .nav-link {
+        font-size: 1em;
+    }
+
+    .category-title {
+        font-size: 1.8em;
+        text-align: center;
+    }
+    .category-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .checkout-header h1 {
+        font-size: 1.8em;
+    }
+
+    .checkout-header p {
+        font-size: 1em;
+    }
+
+    .order-item .item-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .order-item .item-details h4 {
+        font-size: 1em;
+    }
+
+    .order-item .item-details p {
+        font-size: 0.8em;
+    }
+
+    .order-item .item-total-price {
+        font-size: 1em;
+    }
+
+    .summary-line {
+        font-size: 0.9em;
+    }
+
+    .summary-line.total-line h3 {
+        font-size: 1.3em;
+    }
+
+    .place-order-btn, .home-btn {
+        font-size: 1.1em;
+        padding: 12px;
+    }
+
+    .order-confirmation h2, .empty-checkout h2 {
+        font-size: 2em;
+    }
+
+    .order-confirmation p, .empty-checkout p {
+        font-size: 1em;
+    }
+
+    /* Small screen adjustment for sidebar items */
+    .left-sidebar-nav a {
+        padding: 12px 10px;
+        font-size: 0.95em;
+    }
+    .left-sidebar-nav a .category-icon-bg {
+        width: 30px;
+        height: 30px;
+        font-size: 1em;
+        margin-right: 10px;
+    }
+
+    .sbarro-entry-background {
+        height: 280px; /* Even smaller height for very small screens */
+    }
+    .sbarro-entry-background h1 {
+        font-size: 2.2em;
+    }
+    .sbarro-entry-background p {
+        font-size: 1.2em;
+    }
+}

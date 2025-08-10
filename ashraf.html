@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashraf Farghaly – Campus Drinks & Desserts</title>
+    <!-- Favicon -->
+    <link rel="icon" href="images/CumpuEats_Logo.png" type="image/png">
+    <!-- Google Fonts - Roboto and Poppins for modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/ashraf.css">
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <!-- Header Section - Top bar matching the screenshot -->
+        <header class="restaurant-header">
+            <div class="header-banner" style="background-image: url('images/Screenshot 2025-08-05 184554.jpg');">
+                <div class="header-overlay"></div>
+            </div>
+            <div class="header-info-bar">
+                <div class="container">
+                    <div class="restaurant-details">
+                        <img src="images/asgraf_logo.jpg" alt="Ashraf Farghaly Logo" class="restaurant-logo">
+                        <div class="details-text">
+                            <h1 class="restaurant-name">Ashraf Farghaly</h1>
+                            <p class="restaurant-meta">Juices , Desserts <span class="star-rating">★★★★★</span> 4.8 (92)</p>
+                            <!-- Corrected address: removed specific street address -->
+                            <p class="restaurant-address"><i class="fas fa-map-marker-alt"></i> Campus Location</p>
+                        </div>
+                    </div>
+                    <!-- Phone icon removed -->
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Bar Below Header -->
+        <nav class="sub-navigation">
+            <div class="container">
+                <ul>
+                    <li><a href="#menu" class="active">Menu</a></li>
+                    <!-- Corrected: About link now points to about.html -->
+                    <li><a href="about.html">About</a></li>
+                    <!-- "Branches" and "Reviews" removed -->
+                </ul>
+                <div class="info-widgets">
+                    <span class="live-tracking"><i class="fas fa-circle"></i> Live tracking</span>
+                    <span class="delivery-time" id="deliveryTimeDisplay"><i class="fas fa-clock"></i> 08:00 AM - 09:00 PM</span>
+                    <div class="cart-icon-header" id="cartIconContainer">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- New drinks promo section with Drinks.jpg background -->
+        <section class="drinks-promo-section" style="background-image: url('images/Drinks.jpg');">
+            <div class="promo-overlay">
+                <h2>Freshness in Every Sip!</h2>
+                <p>Explore our exquisite range of refreshing juices and delightful desserts.</p>
+            </div>
+        </section>
+
+        <!-- Main Content Area - Layout with left nav, main dishes, right delivery -->
+        <main class="main-content-area container">
+            <aside class="left-sidebar-nav">
+                <ul>
+                    <li>
+                        <!-- Only one category now: Drinks & Desserts -->
+                        <a href="#drinks-desserts" class="category-link active" data-category="drinks-desserts">
+                            <div class="category-icon-bg">
+                                <i class="fas fa-cocktail category-icon"></i>
+                            </div>
+                            <span>Drinks & Desserts</span>
+                            <i class="fas fa-chevron-right arrow-icon"></i>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+            <section class="menu-sections-wrapper">
+                <div class="menu-header-bar">
+                    <div class="search-bar-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" placeholder="Search for a dish" class="search-input" id="searchInput">
+                    </div>
+                    <a href="#" class="btn-scanned-menu">View Scanned Menu <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Drinks & Desserts Section (Single Menu Category) -->
+                <div class="menu-category-section">
+                    <h2 class="section-title" id="drinks-desserts">Drinks & Desserts</h2>
+                    <div id="drinks-desserts-menu-container" class="menu-items-grid">
+                        <!-- Drinks & Desserts will be dynamically loaded here by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <aside class="right-sidebar-delivery">
+                <div class="delivery-box">
+                    <div class="delivery-icon-wrapper">
+                        <i class="fas fa-exclamation-circle delivery-icon"></i>
+                    </div>
+                    <p class="delivery-message" id="deliveryLocationMessage">Choose your delivery location</p>
+                    <button class="btn change-address-btn" id="changeAddressBtn">Change Address <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Cart Sidebar - This will slide in/out on click of the cart icon -->
+        <div class="cart-sidebar" id="cartSidebar">
+            <div class="cart-header">
+                <h2>Your Cart</h2>
+                <button type="button" class="close-cart-btn">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <p class="empty-cart-message">Your cart is empty.</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">0.00 EGP</span>
+                </div>
+                <button type="button" class="btn checkout-btn" id="checkoutBtn">
+                    Proceed to Checkout <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Campus Map Modal (Triggered by Change Address) -->
+        <div class="modal-overlay" id="mapModal">
+            <div class="modal-content map-modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Select Your Campus Location</h3>
+                    <span class="close-modal" id="closeMapModal">&times;</span>
+                </div>
+                <div class="map-image-container">
+                    <img src="images/Mapjpg.jpg" alt="Campus Map" class="campus-map-image">
+                    <!-- Building markers - position these relative to the image -->
+                    <button class="map-marker building-marker" data-building="R" style="top: 25%; left: 15%;">R</button>
+                    <button class="map-marker building-marker" data-building="S" style="top: 45%; left: 30%;">S</button>
+                    <button class="map-marker building-marker" data-building="N" style="top: 70%; left: 35%;">N</button>
+                    <button class="map-marker building-marker" data-building="Pharmacy" style="top: 30%; left: 60%;">Pharmacy</button>
+                    <button class="map-marker building-marker" data-building="E" style="top: 25%; left: 80%;">E</button>
+                    <button class="map-marker building-marker" data-building="Main" style="top: 55%; left: 90%;">Main</button>
+                    <button class="map-marker building-marker" data-building="B" style="top: 70%; left: 70%;">B</button>
+                </div>
+                <div class="selected-location-display" id="selectedLocationDisplay">
+                    No building selected.
+                </div>
+                <button class="btn confirm-location-btn" id="confirmLocationBtn" disabled>Confirm Location</button>
+            </div>
+        </div>
+
+        <!-- Generic Custom Modal (for other alerts like empty cart) -->
+        <div class="modal-overlay" id="custom-modal">
+            <div class="modal-content">
+                <h3 class="modal-title" id="modal-title"></h3>
+                <p class="modal-message" id="modal-message"></p>
+                <button class="modal-btn" id="modal-ok-btn">OK</button>
+            </div>
+        </div>
+
+        <!-- Minimal Footer -->
+        <footer class="site-footer">
+            <div class="container">
+                <p>&copy; 2025 Ashraf's Juices. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/ashraf.js"></script>
+
+</body>
+</html>

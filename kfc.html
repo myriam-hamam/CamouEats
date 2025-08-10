@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KFC Menu – CampuEats</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0ffe0, #f7fff7);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header {
+      background: linear-gradient(135deg, #d32f2f, #f44336);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .main-content {
+      display: flex;
+      min-height: 600px;
+    }
+
+    .menu-section {
+      flex: 2;
+      padding: 30px;
+    }
+
+    .cart-section {
+      flex: 1;
+      background-color: #f8f9fa;
+      padding: 30px;
+      border-left: 1px solid #eee;
+    }
+
+    .menu-category {
+      margin-bottom: 40px;
+    }
+
+    .menu-category h2 {
+      color: #d32f2f;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #d32f2f;
+      padding-bottom: 10px;
+    }
+
+    .menu-item {
+      background-color: white;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 15px;
+      transition: all 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .menu-item:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+
+    .item-info {
+      margin-bottom: 15px;
+    }
+
+    .item-name {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .item-description {
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .item-price {
+      font-weight: bold;
+      color: #d32f2f;
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+
+    .size-options {
+      margin-bottom: 15px;
+    }
+
+    .size-options label {
+      display: inline-block;
+      margin-right: 15px;
+      font-weight: 500;
+    }
+
+    .size-options input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .quantity-selector button {
+      background: #d32f2f;
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quantity-selector button:hover {
+      background: #b71c1c;
+    }
+
+    .quantity-selector span {
+      font-weight: bold;
+      min-width: 30px;
+      text-align: center;
+    }
+
+    .add-to-cart-btn {
+      background: #d32f2f;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    .add-to-cart-btn:hover {
+      background: #b71c1c;
+    }
+
+    .add-to-cart-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .cart-title {
+      color: #d32f2f;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .cart-items {
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .cart-item-name {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .cart-item-details {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .cart-item-price {
+      font-weight: bold;
+      color: #d32f2f;
+    }
+
+    .cart-total {
+      border-top: 2px solid #d32f2f;
+      padding-top: 15px;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .cart-total h3 {
+      color: #d32f2f;
+      margin-bottom: 10px;
+    }
+
+    .checkout-btn {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+
+    .checkout-btn:hover {
+      background: #388e3c;
+    }
+
+    .checkout-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .back-btn {
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      background-color: #d32f2f;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.3s;
+      margin: 20px;
+    }
+
+    .back-btn:hover {
+      background-color: #b71c1c;
+      transform: translateY(-2px);
+    }
+
+    .empty-cart {
+      text-align: center;
+      color: #666;
+      font-style: italic;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1><i class="fas fa-drumstick-bite"></i> KFC</h1>
+      <p>It's Finger Lickin' Good!</p>
+    </div>
+
+    <div class="main-content">
+      <div class="menu-section">
+        <div class="menu-category">
+          <h2>Chicken Buckets</h2>
+          
+          <div class="menu-item" data-name="Original Recipe Bucket" data-base-price="299">
+            <div class="item-info">
+              <div class="item-name">Original Recipe Bucket</div>
+              <div class="item-description">8 pieces of our famous Original Recipe chicken with 2 sides</div>
+              <div class="item-price">EGP 299</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="original-size" value="8pc" checked> 8 Pieces</label>
+              <label><input type="radio" name="original-size" value="12pc"> 12 Pieces (+EGP 100)</label>
+              <label><input type="radio" name="original-size" value="16pc"> 16 Pieces (+EGP 200)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('original', -1)">-</button>
+              <span id="original-qty">1</span>
+              <button onclick="changeQuantity('original', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('original')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Crispy Bucket" data-base-price="329">
+            <div class="item-info">
+              <div class="item-name">Crispy Bucket</div>
+              <div class="item-description">8 pieces of crispy fried chicken with 2 sides</div>
+              <div class="item-price">EGP 329</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="crispy-size" value="8pc" checked> 8 Pieces</label>
+              <label><input type="radio" name="crispy-size" value="12pc"> 12 Pieces (+EGP 100)</label>
+              <label><input type="radio" name="crispy-size" value="16pc"> 16 Pieces (+EGP 200)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('crispy', -1)">-</button>
+              <span id="crispy-qty">1</span>
+              <button onclick="changeQuantity('crispy', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('crispy')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Spicy Bucket" data-base-price="349">
+            <div class="item-info">
+              <div class="item-name">Spicy Bucket</div>
+              <div class="item-description">8 pieces of spicy fried chicken with 2 sides</div>
+              <div class="item-price">EGP 349</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="spicy-size" value="8pc" checked> 8 Pieces</label>
+              <label><input type="radio" name="spicy-size" value="12pc"> 12 Pieces (+EGP 100)</label>
+              <label><input type="radio" name="spicy-size" value="16pc"> 16 Pieces (+EGP 200)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('spicy', -1)">-</button>
+              <span id="spicy-qty">1</span>
+              <button onclick="changeQuantity('spicy', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('spicy')">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h2>Chicken Pieces</h2>
+          
+          <div class="menu-item" data-name="2 Piece Meal" data-base-price="89">
+            <div class="item-info">
+              <div class="item-name">2 Piece Meal</div>
+              <div class="item-description">2 pieces of chicken with fries and drink</div>
+              <div class="item-price">EGP 89</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="2piece-size" value="original" checked> Original Recipe</label>
+              <label><input type="radio" name="2piece-size" value="crispy"> Crispy (+EGP 10)</label>
+              <label><input type="radio" name="2piece-size" value="spicy"> Spicy (+EGP 15)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('2piece', -1)">-</button>
+              <span id="2piece-qty">1</span>
+              <button onclick="changeQuantity('2piece', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('2piece')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="3 Piece Meal" data-base-price="129">
+            <div class="item-info">
+              <div class="item-name">3 Piece Meal</div>
+              <div class="item-description">3 pieces of chicken with fries and drink</div>
+              <div class="item-price">EGP 129</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="3piece-size" value="original" checked> Original Recipe</label>
+              <label><input type="radio" name="3piece-size" value="crispy"> Crispy (+EGP 10)</label>
+              <label><input type="radio" name="3piece-size" value="spicy"> Spicy (+EGP 15)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('3piece', -1)">-</button>
+              <span id="3piece-qty">1</span>
+              <button onclick="changeQuantity('3piece', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('3piece')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="6 Piece Meal" data-base-price="229">
+            <div class="item-info">
+              <div class="item-name">6 Piece Meal</div>
+              <div class="item-description">6 pieces of chicken with 2 sides and 2 drinks</div>
+              <div class="item-price">EGP 229</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="6piece-size" value="original" checked> Original Recipe</label>
+              <label><input type="radio" name="6piece-size" value="crispy"> Crispy (+EGP 20)</label>
+              <label><input type="radio" name="6piece-size" value="spicy"> Spicy (+EGP 30)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('6piece', -1)">-</button>
+              <span id="6piece-qty">1</span>
+              <button onclick="changeQuantity('6piece', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('6piece')">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h2>Burgers & Sandwiches</h2>
+          
+          <div class="menu-item" data-name="Zinger Burger" data-base-price="79">
+            <div class="item-info">
+              <div class="item-name">Zinger Burger</div>
+              <div class="item-description">Spicy chicken fillet with lettuce and mayo</div>
+              <div class="item-price">EGP 79</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="zinger-size" value="single" checked> Single</label>
+              <label><input type="radio" name="zinger-size" value="double"> Double (+EGP 30)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('zinger', -1)">-</button>
+              <span id="zinger-qty">1</span>
+              <button onclick="changeQuantity('zinger', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('zinger')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Chicken Burger" data-base-price="69">
+            <div class="item-info">
+              <div class="item-name">Chicken Burger</div>
+              <div class="item-description">Original recipe chicken with lettuce and mayo</div>
+              <div class="item-price">EGP 69</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="chickenburger-size" value="single" checked> Single</label>
+              <label><input type="radio" name="chickenburger-size" value="double"> Double (+EGP 25)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('chickenburger', -1)">-</button>
+              <span id="chickenburger-qty">1</span>
+              <button onclick="changeQuantity('chickenburger', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('chickenburger')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Chicken Sandwich" data-base-price="59">
+            <div class="item-info">
+              <div class="item-name">Chicken Sandwich</div>
+              <div class="item-description">Chicken fillet with fresh vegetables</div>
+              <div class="item-price">EGP 59</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="sandwich-size" value="single" checked> Single</label>
+              <label><input type="radio" name="sandwich-size" value="double"> Double (+EGP 20)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('sandwich', -1)">-</button>
+              <span id="sandwich-qty">1</span>
+              <button onclick="changeQuantity('sandwich', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('sandwich')">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h2>Sides & Drinks</h2>
+          
+          <div class="menu-item" data-name="French Fries" data-base-price="25">
+            <div class="item-info">
+              <div class="item-name">French Fries</div>
+              <div class="item-description">Crispy golden fries</div>
+              <div class="item-price">EGP 25</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="fries-size" value="small" checked> Small</label>
+              <label><input type="radio" name="fries-size" value="medium"> Medium (+EGP 10)</label>
+              <label><input type="radio" name="fries-size" value="large"> Large (+EGP 20)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('fries', -1)">-</button>
+              <span id="fries-qty">1</span>
+              <button onclick="changeQuantity('fries', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('fries')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Coleslaw" data-base-price="20">
+            <div class="item-info">
+              <div class="item-name">Coleslaw</div>
+              <div class="item-description">Fresh cabbage and carrot salad</div>
+              <div class="item-price">EGP 20</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="coleslaw-size" value="small" checked> Small</label>
+              <label><input type="radio" name="coleslaw-size" value="large"> Large (+EGP 10)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('coleslaw', -1)">-</button>
+              <span id="coleslaw-qty">1</span>
+              <button onclick="changeQuantity('coleslaw', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('coleslaw')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Soft Drink" data-base-price="15">
+            <div class="item-info">
+              <div class="item-name">Soft Drink</div>
+              <div class="item-description">Coca-Cola, Pepsi, or Sprite</div>
+              <div class="item-price">EGP 15</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="drink-size" value="small" checked> Small</label>
+              <label><input type="radio" name="drink-size" value="medium"> Medium (+EGP 5)</label>
+              <label><input type="radio" name="drink-size" value="large"> Large (+EGP 10)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('drink', -1)">-</button>
+              <span id="drink-qty">1</span>
+              <button onclick="changeQuantity('drink', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('drink')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-section">
+        <h2 class="cart-title"><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+        <div id="cart-items" class="cart-items">
+          <div class="empty-cart">Your cart is empty</div>
+        </div>
+        <div class="cart-total">
+          <h3>Total: <span id="cart-total">EGP 0</span></h3>
+          <button class="checkout-btn" id="checkout-btn" onclick="checkout()" disabled>Checkout</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; padding-bottom: 20px;">
+      <a href="outside.html" class="back-btn">⬅ Back to Outside Restaurants</a>
+    </div>
+  </div>
+
+  <script>
+    let cart = [];
+    let quantities = {
+      original: 1, crispy: 1, spicy: 1,
+      '2piece': 1, '3piece': 1, '6piece': 1,
+      zinger: 1, chickenburger: 1, sandwich: 1,
+      fries: 1, coleslaw: 1, drink: 1
+    };
+
+    function changeQuantity(item, change) {
+      const newQty = quantities[item] + change;
+      if (newQty >= 1 && newQty <= 10) {
+        quantities[item] = newQty;
+        document.getElementById(item + '-qty').textContent = newQty;
+      }
+    }
+
+    function addToCart(itemType) {
+      const menuItem = document.querySelector(`[data-name*="${getItemName(itemType)}"]`);
+      const sizeInputs = document.querySelectorAll(`input[name="${itemType}-size"]`);
+      let selectedSize = 'small';
+      
+      sizeInputs.forEach(input => {
+        if (input.checked) {
+          selectedSize = input.value;
+        }
+      });
+
+      const basePrice = parseInt(menuItem.dataset.basePrice);
+      let finalPrice = basePrice;
+      
+      // Calculate price based on size/type
+      if (selectedSize === 'medium' || selectedSize === '12pc' || selectedSize === 'double') {
+        if (itemType === 'original' || itemType === 'crispy' || itemType === 'spicy') {
+          finalPrice += 100;
+        } else if (itemType === 'zinger') {
+          finalPrice += 30;
+        } else if (itemType === 'chickenburger') {
+          finalPrice += 25;
+        } else if (itemType === 'sandwich') {
+          finalPrice += 20;
+        } else if (itemType === 'fries') {
+          finalPrice += 10;
+        } else if (itemType === 'drink') {
+          finalPrice += 5;
+        }
+      } else if (selectedSize === 'large' || selectedSize === '16pc') {
+        if (itemType === 'original' || itemType === 'crispy' || itemType === 'spicy') {
+          finalPrice += 200;
+        } else if (itemType === 'fries') {
+          finalPrice += 20;
+        } else if (itemType === 'drink') {
+          finalPrice += 10;
+        }
+      } else if (selectedSize === 'crispy') {
+        if (itemType === '2piece') {
+          finalPrice += 10;
+        } else if (itemType === '3piece') {
+          finalPrice += 10;
+        } else if (itemType === '6piece') {
+          finalPrice += 20;
+        }
+      } else if (selectedSize === 'spicy') {
+        if (itemType === '2piece') {
+          finalPrice += 15;
+        } else if (itemType === '3piece') {
+          finalPrice += 15;
+        } else if (itemType === '6piece') {
+          finalPrice += 30;
+        }
+      } else if (selectedSize === 'large' && itemType === 'coleslaw') {
+        finalPrice += 10;
+      }
+
+      const quantity = quantities[itemType];
+      const totalPrice = finalPrice * quantity;
+
+      const cartItem = {
+        name: getItemName(itemType),
+        size: selectedSize,
+        quantity: quantity,
+        price: finalPrice,
+        total: totalPrice
+      };
+
+      cart.push(cartItem);
+      updateCartDisplay();
+      resetQuantity(itemType);
+      
+      // Show success message
+      const btn = event.target;
+      const originalText = btn.textContent;
+      btn.textContent = 'Added!';
+      btn.style.background = '#4CAF50';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '#d32f2f';
+      }, 1000);
+    }
+
+    function getItemName(itemType) {
+      const names = {
+        original: 'Original Recipe Bucket',
+        crispy: 'Crispy Bucket',
+        spicy: 'Spicy Bucket',
+        '2piece': '2 Piece Meal',
+        '3piece': '3 Piece Meal',
+        '6piece': '6 Piece Meal',
+        zinger: 'Zinger Burger',
+        chickenburger: 'Chicken Burger',
+        sandwich: 'Chicken Sandwich',
+        fries: 'French Fries',
+        coleslaw: 'Coleslaw',
+        drink: 'Soft Drink'
+      };
+      return names[itemType];
+    }
+
+    function resetQuantity(itemType) {
+      quantities[itemType] = 1;
+      document.getElementById(itemType + '-qty').textContent = '1';
+    }
+
+    function updateCartDisplay() {
+      const cartContainer = document.getElementById('cart-items');
+      const checkoutBtn = document.getElementById('checkout-btn');
+      
+      if (cart.length === 0) {
+        cartContainer.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+        checkoutBtn.disabled = true;
+        return;
+      }
+
+      let cartHTML = '';
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        cartHTML += `
+          <div class="cart-item">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-details">Size: ${item.size.charAt(0).toUpperCase() + item.size.slice(1)} | Qty: ${item.quantity}</div>
+            <div class="cart-item-price">EGP ${item.total}</div>
+            <button onclick="removeFromCart(${index})" style="background: #f44336; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-top: 5px;">Remove</button>
+          </div>
+        `;
+        total += item.total;
+      });
+
+      cartContainer.innerHTML = cartHTML;
+      document.getElementById('cart-total').textContent = `EGP ${total}`;
+      checkoutBtn.disabled = false;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartDisplay();
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      
+      const total = cart.reduce((sum, item) => sum + item.total, 0);
+      alert(`Order placed successfully!\nTotal: EGP ${total}\nThank you for choosing KFC!`);
+      
+      // Clear cart
+      cart = [];
+      updateCartDisplay();
+    }
+  </script>
+
+</body>
+</html> 

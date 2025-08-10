@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Restaurant | CampuEats</title>
+  <link rel="stylesheet" href="css/universal-styles.css">
+  <link rel="stylesheet" href="css/restaurant.css">
+</head>
+<body>
+
+<header class="restaurant-header">
+  <div class="container">
+    <nav class="breadcrumbs">
+      <a href="entry.html">Home</a> &gt;
+      <span id="breadcrumb-restaurant-name">Restaurant</span>
+    </nav>
+    <div class="user-actions">
+      <a href="checkout.html" class="cart-icon">
+        🛒 <span id="cart-item-count-header">0</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="restaurant-main">
+  <div class="container">
+    <div class="restaurant-info">
+      <img id="restaurant-logo" src="" alt="Restaurant Logo" onerror="this.src='images/LOGO.JPG'">
+      <div>
+        <h1 id="restaurant-name">Loading...</h1>
+        <p id="restaurant-description"></p>
+      </div>
+    </div>
+
+    <div class="menu-layout">
+      <div class="menu-sections-wrapper">
+        <h2>Menu</h2>
+        <section id="menu-grid"></section>
+      </div>
+
+      <aside class="cart-section">
+        <h2>Your Cart</h2>
+        <div id="cart-items-container"></div>
+        <div class="cart-summary">
+          <span id="cart-item-count">0 items</span>
+          <span id="cart-total-price">EGP 0.00</span>
+        </div>
+        <button id="checkout-button" disabled>Checkout</button>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<script src="js/restaurant.js"></script>
+</body>
+</html>

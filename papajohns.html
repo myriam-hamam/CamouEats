@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Papa John's Pizza Menu – CampuEats</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0ffe0, #f7fff7);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header {
+      background: linear-gradient(135deg, #d32f2f, #f44336);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      position: relative;
+      width: 200px;
+      height: 100px;
+      background: white;
+      border: 4px solid #2E7D32;
+      border-radius: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .logo-banner {
+      position: absolute;
+      top: -15px;
+      background: #2E7D32;
+      color: white;
+      padding: 5px 15px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transform: rotate(-2deg);
+    }
+
+    .logo-banner::before,
+    .logo-banner::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 0;
+      height: 0;
+      border: 8px solid transparent;
+    }
+
+    .logo-banner::before {
+      left: -8px;
+      border-right-color: #2E7D32;
+    }
+
+    .logo-banner::after {
+      right: -8px;
+      border-left-color: #2E7D32;
+    }
+
+    .logo-main {
+      color: #D32F2F;
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .logo-trademark {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      color: #2E7D32;
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+
+    .main-content {
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .menu-section {
+      width: 100%;
+    }
+
+    .floating-cart {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #d32f2f;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: all 0.3s;
+    }
+
+    .floating-cart:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+
+    .cart-icon {
+      font-size: 24px;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #ff4444;
+      color: white;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .cart-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .cart-modal.show {
+      display: flex;
+    }
+
+    .cart-content {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #d32f2f;
+    }
+
+    .cart-title {
+      color: #d32f2f;
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    .close-cart {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .close-cart:hover {
+      color: #d32f2f;
+    }
+
+    .menu-category {
+      margin-bottom: 40px;
+    }
+
+    .menu-category h2 {
+      color: #d32f2f;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #d32f2f;
+      padding-bottom: 10px;
+    }
+
+    .menu-item {
+      background-color: white;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 15px;
+      transition: all 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .menu-item:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+
+    .item-info {
+      margin-bottom: 15px;
+    }
+
+    .item-name {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .item-description {
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .item-price {
+      font-weight: bold;
+      color: #d32f2f;
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+
+    .size-options {
+      margin-bottom: 15px;
+    }
+
+    .size-options label {
+      display: inline-block;
+      margin-right: 15px;
+      font-weight: 500;
+    }
+
+    .size-options input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .quantity-selector button {
+      background: #d32f2f;
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quantity-selector button:hover {
+      background: #b71c1c;
+    }
+
+    .quantity-selector span {
+      font-weight: bold;
+      min-width: 30px;
+      text-align: center;
+    }
+
+    .add-to-cart-btn {
+      background: #d32f2f;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    .add-to-cart-btn:hover {
+      background: #b71c1c;
+    }
+
+    .add-to-cart-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .cart-title {
+      color: #d32f2f;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .cart-items {
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .cart-item-name {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .cart-item-details {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .cart-item-price {
+      font-weight: bold;
+      color: #d32f2f;
+    }
+
+    .cart-total {
+      border-top: 2px solid #d32f2f;
+      padding-top: 15px;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .cart-total h3 {
+      color: #d32f2f;
+      margin-bottom: 10px;
+    }
+
+    .checkout-btn {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+
+    .checkout-btn:hover {
+      background: #388e3c;
+    }
+
+    .checkout-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .back-btn {
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      background-color: #d32f2f;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.3s;
+      margin: 20px;
+    }
+
+    .back-btn:hover {
+      background-color: #b71c1c;
+      transform: translateY(-2px);
+    }
+
+    .empty-cart {
+      text-align: center;
+      color: #666;
+      font-style: italic;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <div class="logo-container">
+        <div class="logo">
+          <div class="logo-banner">PIZZA</div>
+          <div class="logo-main">PAPA JOHN'S</div>
+          <div class="logo-trademark">®</div>
+        </div>
+      </div>
+      <h1>Papa John's Pizza</h1>
+      <p>Fresh ingredients, better pizza</p>
+    </div>
+
+    <div class="main-content">
+      <div class="menu-section">
+        <div class="menu-category">
+          <h2>Classic Pizzas</h2>
+          
+          <div class="menu-item" data-name="Pepperoni Pizza" data-base-price="399">
+            <div class="item-info">
+              <div class="item-name">Pepperoni Pizza</div>
+              <div class="item-description">Classic pepperoni with our signature tomato sauce and mozzarella cheese</div>
+              <div class="item-price">EGP 399</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="pepperoni-size" value="small" checked> Small</label>
+              <label><input type="radio" name="pepperoni-size" value="medium"> Medium (+EGP 50)</label>
+              <label><input type="radio" name="pepperoni-size" value="large"> Large (+EGP 100)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('pepperoni', -1)">-</button>
+              <span id="pepperoni-qty">1</span>
+              <button onclick="changeQuantity('pepperoni', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('pepperoni')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Margherita Pizza" data-base-price="369">
+            <div class="item-info">
+              <div class="item-name">Margherita Pizza</div>
+              <div class="item-description">Fresh mozzarella, basil, and our signature tomato sauce</div>
+              <div class="item-price">EGP 369</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="margherita-size" value="small" checked> Small</label>
+              <label><input type="radio" name="margherita-size" value="medium"> Medium (+EGP 50)</label>
+              <label><input type="radio" name="margherita-size" value="large"> Large (+EGP 100)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('margherita', -1)">-</button>
+              <span id="margherita-qty">1</span>
+              <button onclick="changeQuantity('margherita', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('margherita')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Cheese Pizza" data-base-price="339">
+            <div class="item-info">
+              <div class="item-name">Cheese Pizza</div>
+              <div class="item-description">Our signature tomato sauce with mozzarella cheese</div>
+              <div class="item-price">EGP 339</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="cheese-size" value="small" checked> Small</label>
+              <label><input type="radio" name="cheese-size" value="medium"> Medium (+EGP 50)</label>
+              <label><input type="radio" name="cheese-size" value="large"> Large (+EGP 100)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('cheese', -1)">-</button>
+              <span id="cheese-qty">1</span>
+              <button onclick="changeQuantity('cheese', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('cheese')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Hawaiian Pizza" data-base-price="429">
+            <div class="item-info">
+              <div class="item-name">Hawaiian Pizza</div>
+              <div class="item-description">Ham and pineapple with mozzarella cheese</div>
+              <div class="item-price">EGP 429</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="hawaiian-size" value="small" checked> Small</label>
+              <label><input type="radio" name="hawaiian-size" value="medium"> Medium (+EGP 50)</label>
+              <label><input type="radio" name="hawaiian-size" value="large"> Large (+EGP 100)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('hawaiian', -1)">-</button>
+              <span id="hawaiian-qty">1</span>
+              <button onclick="changeQuantity('hawaiian', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('hawaiian')">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h2>Specialty Pizzas</h2>
+          
+          <div class="menu-item" data-name="Supreme Pizza" data-base-price="519">
+            <div class="item-info">
+              <div class="item-name">Supreme Pizza</div>
+              <div class="item-description">Pepperoni, sausage, green peppers, onions, mushrooms, and olives</div>
+              <div class="item-price">EGP 519</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="supreme-size" value="small" checked> Small</label>
+              <label><input type="radio" name="supreme-size" value="medium"> Medium (+EGP 50)</label>
+              <label><input type="radio" name="supreme-size" value="large"> Large (+EGP 100)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('supreme', -1)">-</button>
+              <span id="supreme-qty">1</span>
+              <button onclick="changeQuantity('supreme', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('supreme')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="BBQ Chicken Pizza" data-base-price="489">
+            <div class="item-info">
+              <div class="item-name">BBQ Chicken Pizza</div>
+              <div class="item-description">BBQ sauce, grilled chicken, red onions, and mozzarella cheese</div>
+              <div class="item-price">EGP 489</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="bbq-size" value="small" checked> Small</label>
+              <label><input type="radio" name="bbq-size" value="medium"> Medium (+EGP 50)</label>
+              <label><input type="radio" name="bbq-size" value="large"> Large (+EGP 100)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('bbq', -1)">-</button>
+              <span id="bbq-qty">1</span>
+              <button onclick="changeQuantity('bbq', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('bbq')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Veggie Pizza" data-base-price="459">
+            <div class="item-info">
+              <div class="item-name">Veggie Pizza</div>
+              <div class="item-description">Green peppers, onions, mushrooms, black olives, and tomatoes</div>
+              <div class="item-price">EGP 459</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="veggie-size" value="small" checked> Small</label>
+              <label><input type="radio" name="veggie-size" value="medium"> Medium (+EGP 50)</label>
+              <label><input type="radio" name="veggie-size" value="large"> Large (+EGP 100)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('veggie', -1)">-</button>
+              <span id="veggie-qty">1</span>
+              <button onclick="changeQuantity('veggie', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('veggie')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Meat Lovers Pizza" data-base-price="549">
+            <div class="item-info">
+              <div class="item-name">Meat Lovers Pizza</div>
+              <div class="item-description">Pepperoni, sausage, bacon, ham, and mozzarella cheese</div>
+              <div class="item-price">EGP 549</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="meat-size" value="small" checked> Small</label>
+              <label><input type="radio" name="meat-size" value="medium"> Medium (+EGP 50)</label>
+              <label><input type="radio" name="meat-size" value="large"> Large (+EGP 100)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('meat', -1)">-</button>
+              <span id="meat-qty">1</span>
+              <button onclick="changeQuantity('meat', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('meat')">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h2>Premium Pizzas</h2>
+          
+          <div class="menu-item" data-name="Buffalo Chicken Pizza" data-base-price="579">
+            <div class="item-info">
+              <div class="item-name">Buffalo Chicken Pizza</div>
+              <div class="item-description">Buffalo sauce, grilled chicken, red onions, and ranch drizzle</div>
+              <div class="item-price">EGP 579</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="buffalo-size" value="small" checked> Small</label>
+              <label><input type="radio" name="buffalo-size" value="medium"> Medium (+EGP 50)</label>
+              <label><input type="radio" name="buffalo-size" value="large"> Large (+EGP 100)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('buffalo', -1)">-</button>
+              <span id="buffalo-qty">1</span>
+              <button onclick="changeQuantity('buffalo', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('buffalo')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Spinach Alfredo Pizza" data-base-price="519">
+            <div class="item-info">
+              <div class="item-name">Spinach Alfredo Pizza</div>
+              <div class="item-description">Alfredo sauce, spinach, tomatoes, and mozzarella cheese</div>
+              <div class="item-price">EGP 519</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="spinach-size" value="small" checked> Small</label>
+              <label><input type="radio" name="spinach-size" value="medium"> Medium (+EGP 50)</label>
+              <label><input type="radio" name="spinach-size" value="large"> Large (+EGP 100)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('spinach', -1)">-</button>
+              <span id="spinach-qty">1</span>
+              <button onclick="changeQuantity('spinach', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('spinach')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Tuscan Six Cheese Pizza" data-base-price="609">
+            <div class="item-info">
+              <div class="item-name">Tuscan Six Cheese Pizza</div>
+              <div class="item-description">Six different cheeses: mozzarella, parmesan, romano, asiago, fontina, and provolone</div>
+              <div class="item-price">EGP 609</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="tuscan-size" value="small" checked> Small</label>
+              <label><input type="radio" name="tuscan-size" value="medium"> Medium (+EGP 50)</label>
+              <label><input type="radio" name="tuscan-size" value="large"> Large (+EGP 100)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('tuscan', -1)">-</button>
+              <span id="tuscan-qty">1</span>
+              <button onclick="changeQuantity('tuscan', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('tuscan')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Cart Icon -->
+      <div class="floating-cart" onclick="openCart()">
+        <i class="fas fa-shopping-cart cart-icon"></i>
+        <div class="cart-badge" id="cart-badge">0</div>
+      </div>
+
+      <!-- Cart Modal -->
+      <div class="cart-modal" id="cart-modal">
+        <div class="cart-content">
+          <div class="cart-header">
+            <h2 class="cart-title"><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+            <button class="close-cart" onclick="closeCart()">&times;</button>
+          </div>
+          <div id="cart-items" class="cart-items">
+            <div class="empty-cart">Your cart is empty</div>
+          </div>
+          <div class="cart-total">
+            <h3>Total: <span id="cart-total">EGP 0</span></h3>
+            <button class="checkout-btn" id="checkout-btn" onclick="checkout()" disabled>Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; padding-bottom: 20px;">
+      <a href="outside.html" class="back-btn">⬅ Back to Outside Restaurants</a>
+    </div>
+  </div>
+
+  <script>
+    let cart = [];
+    let quantities = {
+      pepperoni: 1, margherita: 1, cheese: 1, hawaiian: 1,
+      supreme: 1, bbq: 1, veggie: 1, meat: 1,
+      buffalo: 1, spinach: 1, tuscan: 1
+    };
+
+    function changeQuantity(item, change) {
+      const newQty = quantities[item] + change;
+      if (newQty >= 1 && newQty <= 10) {
+        quantities[item] = newQty;
+        document.getElementById(item + '-qty').textContent = newQty;
+      }
+    }
+
+    function addToCart(itemType) {
+      const menuItem = document.querySelector(`[data-name*="${getItemName(itemType)}"]`);
+      const sizeInputs = document.querySelectorAll(`input[name="${itemType}-size"]`);
+      let selectedSize = 'small';
+      
+      sizeInputs.forEach(input => {
+        if (input.checked) {
+          selectedSize = input.value;
+        }
+      });
+
+      const basePrice = parseInt(menuItem.dataset.basePrice);
+      let finalPrice = basePrice;
+      
+      if (selectedSize === 'medium') {
+        finalPrice += 50;
+      } else if (selectedSize === 'large') {
+        finalPrice += 100;
+      }
+
+      const quantity = quantities[itemType];
+      const totalPrice = finalPrice * quantity;
+
+      const cartItem = {
+        name: getItemName(itemType),
+        size: selectedSize,
+        quantity: quantity,
+        price: finalPrice,
+        total: totalPrice
+      };
+
+      cart.push(cartItem);
+      updateCartDisplay();
+      resetQuantity(itemType);
+      
+      // Show success message
+      const btn = event.target;
+      const originalText = btn.textContent;
+      btn.textContent = 'Added!';
+      btn.style.background = '#4CAF50';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '#d32f2f';
+      }, 1000);
+    }
+
+    function getItemName(itemType) {
+      const names = {
+        pepperoni: 'Pepperoni Pizza',
+        margherita: 'Margherita Pizza',
+        cheese: 'Cheese Pizza',
+        hawaiian: 'Hawaiian Pizza',
+        supreme: 'Supreme Pizza',
+        bbq: 'BBQ Chicken Pizza',
+        veggie: 'Veggie Pizza',
+        meat: 'Meat Lovers Pizza',
+        buffalo: 'Buffalo Chicken Pizza',
+        spinach: 'Spinach Alfredo Pizza',
+        tuscan: 'Tuscan Six Cheese Pizza'
+      };
+      return names[itemType];
+    }
+
+    function resetQuantity(itemType) {
+      quantities[itemType] = 1;
+      document.getElementById(itemType + '-qty').textContent = '1';
+    }
+
+    function updateCartDisplay() {
+      const cartContainer = document.getElementById('cart-items');
+      const checkoutBtn = document.getElementById('checkout-btn');
+      const cartBadge = document.getElementById('cart-badge');
+      
+      // Update cart badge
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartBadge.textContent = totalItems;
+      cartBadge.style.display = totalItems > 0 ? 'flex' : 'none';
+      
+      if (cart.length === 0) {
+        cartContainer.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+        checkoutBtn.disabled = true;
+        return;
+      }
+
+      let cartHTML = '';
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        cartHTML += `
+          <div class="cart-item">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-details">Size: ${item.size.charAt(0).toUpperCase() + item.size.slice(1)} | Qty: ${item.quantity}</div>
+            <div class="cart-item-price">EGP ${item.total}</div>
+            <button onclick="removeFromCart(${index})" style="background: #f44336; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-top: 5px;">Remove</button>
+          </div>
+        `;
+        total += item.total;
+      });
+
+      cartContainer.innerHTML = cartHTML;
+      document.getElementById('cart-total').textContent = `EGP ${total}`;
+      checkoutBtn.disabled = false;
+    }
+
+    function openCart() {
+      document.getElementById('cart-modal').classList.add('show');
+    }
+
+    function closeCart() {
+      document.getElementById('cart-modal').classList.remove('show');
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartDisplay();
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      
+      const total = cart.reduce((sum, item) => sum + item.total, 0);
+      alert(`Order placed successfully!\nTotal: EGP ${total}\nThank you for choosing Papa John's!`);
+      
+      // Clear cart
+      cart = [];
+      updateCartDisplay();
+    }
+  </script>
+
+</body>
+</html>

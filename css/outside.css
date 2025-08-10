@@ -1,0 +1,115 @@
+/* outside.css - Professional styles for the outside.html page */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #f0f2f5, #e0e5ec); /* Softer, professional gradient */
+    min-height: 100vh; /* Use min-height to allow content to push footer */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    padding: 20px; /* Add some padding around the content */
+}
+
+.main-container {
+    background-color: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* More pronounced shadow */
+    text-align: center;
+    width: 95%; /* Slightly wider container */
+    max-width: 900px; /* Max width for larger screens */
+    animation: fadeInScale 0.8s ease-out forwards; /* Smoother animation */
+    margin-top: 20px; /* Space from top */
+    margin-bottom: 20px; /* Space from bottom */
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.page-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem; /* Adjusted title size */
+    color: #2c3e50; /* Darker, more professional blue-grey */
+    margin-bottom: 30px;
+}
+
+.restaurant-grid {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between grid items */
+    margin-bottom: 40px; /* Space below the grid */
+}
+
+.restaurant-card {
+    display: flex; /* Use flexbox for centering text */
+    justify-content: center;
+    align-items: center;
+    text-decoration: none; /* Remove underline from links */
+    background-color: #f8f9fa; /* Light background for cards */
+    color: #4CAF50; /* Green text for restaurant names */
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Subtle card shadow */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    min-height: 80px; /* Ensure consistent height for cards */
+}
+
+.restaurant-card:hover {
+    background-color: #e6ffe6; /* Lighter green on hover */
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* More prominent shadow on hover */
+}
+
+.back-btn {
+    margin-top: 30px;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #555; /* Darker grey for back button */
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back-btn:hover {
+    background-color: #333; /* Even darker grey on hover */
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 30px 20px;
+    }
+    .page-title {
+        font-size: 1.8rem;
+    }
+    .restaurant-grid {
+        grid-template-columns: 1fr; /* Stack on very small screens */
+    }
+    .restaurant-card {
+        font-size: 1.1rem;
+        padding: 15px;
+    }
+}

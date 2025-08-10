@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampuEats Register</title>
+    <!-- Favicon: Project logo on the web tab icon -->
+    <link rel="icon" href="images/CumpuEats_Logo.png" type="image/png">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="css/signup.css">
+    <!-- Google Fonts for professional typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="register-container">
+        <div class="logo"><i class="fas fa-utensils"></i></div>
+        <h2>Create Your CampuEats Account</h2>
+
+        <!-- The form action will be handled by JavaScript upon successful validation -->
+        <form id="signupForm" action="#" method="post">
+            <!-- First Name Input -->
+            <input type="text" name="firstName" id="firstName" placeholder="First Name">
+            <span class="error-message" id="firstNameError"></span>
+
+            <!-- Last Name Input -->
+            <input type="text" name="lastName" id="lastName" placeholder="Last Name">
+            <span class="error-message" id="lastNameError"></span>
+
+            <!-- Email Input -->
+            <input type="email" name="email" id="signupEmail" placeholder="Email (e.g. your@miu.edu.eg)">
+            <span class="error-message" id="signupEmailError"></span>
+
+            <!-- Password Input -->
+            <input 
+                type="password" 
+                name="password" 
+                id="signupPassword"
+                placeholder="Create a password">
+            <span class="error-message" id="signupPasswordError"></span>
+
+            <!-- Confirm Password Input -->
+            <input 
+                type="password" 
+                name="confirmPassword" 
+                id="confirmPassword" 
+                placeholder="Confirm your password">
+            <span class="error-message" id="confirmPasswordError"></span>
+
+            <input type="submit" value="Register">
+        </form>
+
+        <div class="login-link">
+            Already have an account?
+            <a href="login.html">Login</a>
+        </div>
+    </div>
+
+    <!-- Link to the JavaScript file for validation -->
+    <script src="js/signup.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,583 @@
+/* Universal Box-Sizing and Basic Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body, h1, h2, h3, p, ul, ol, li, figure, figcaption, blockquote, dl, dd {
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* General Body and Container Styles (Universal) */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f0f2f5; /* Light grey background */
+    color: #333;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: transparent;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- UNIVERSAL HEADER / BREADCRUMBS (for pages like checkout) --- */
+.checkout-header { /* Reusing name but it's now a universal header style */
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.checkout-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    font-size: 0.95em;
+    color: #777;
+}
+
+.breadcrumbs a {
+    color: #777;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumbs a:hover {
+    color: var(--primary-color, #3498db); /* Dynamic primary color or a generic blue fallback */
+}
+
+.breadcrumbs .fas {
+    margin: 0 8px;
+    font-size: 0.8em;
+    color: #bbb;
+}
+
+.breadcrumbs span {
+    font-weight: 500;
+    color: #333;
+}
+
+/* Universal Cart Link Specific Styling (for header) */
+.nav-link.cart-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--primary-color, #3498db); /* Dynamic primary color or generic blue fallback */
+    font-size: 1.5em;
+    padding: 5px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.nav-link.cart-link:hover {
+    background-color: #f5f5f5;
+}
+
+.nav-link.cart-link .cart-count {
+    background-color: #4CAF50; /* Green for count */
+    color: #fff;
+    font-size: 0.75em;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 3px 7px;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    min-width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.nav-link.cart-link .cart-count.hidden {
+    display: none;
+}
+
+/* --- CHECKOUT PAGE SPECIFIC STYLES (now truly universal) --- */
+.checkout-main {
+    padding: 30px 0;
+    background-color: #f0f2f5;
+    flex-grow: 1;
+}
+
+#checkout-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.checkout-section {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.restaurant-summary {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.restaurant-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.restaurant-details h1 {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.delivery-info {
+    font-size: 1.1em;
+    color: #666;
+}
+
+.order-details h2, .order-summary h2, .payment-methods h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.order-item .item-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 1px solid #ddd;
+}
+
+.order-item .item-info {
+    flex-grow: 1;
+}
+
+.order-item .item-info h4 {
+    margin: 0 0 5px;
+    font-size: 1.1em;
+    color: #555;
+    font-weight: 500;
+}
+
+.order-item .item-info p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #888;
+}
+
+.order-item .item-total-price {
+    font-weight: bold;
+    color: var(--primary-color, #3498db); /* Dynamic primary color or generic blue fallback */
+    font-size: 1.2em;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.summary-line:first-of-type {
+    border-top: 1px solid #f0f0f0;
+}
+
+.summary-line:last-of-type {
+    padding-bottom: 0;
+}
+
+.summary-line.total-line {
+    border-top: 2px solid var(--primary-color, #3498db); /* Dynamic primary color or generic blue fallback */
+    margin-top: 15px;
+    padding-top: 20px;
+    font-size: 1.2em;
+}
+
+.summary-line h3 {
+    margin: 0;
+    color: var(--primary-color, #3498db); /* Dynamic primary color or generic blue fallback */
+}
+
+.summary-line span {
+    color: #555;
+    font-weight: 500;
+}
+
+.summary-line.total-line span {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--primary-color, #3498db); /* Dynamic primary color or generic blue fallback */
+}
+
+/* Payment Method Styles */
+.payment-methods label {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    border: 2px solid #eee;
+}
+
+.payment-methods label:hover {
+    background-color: #f0f0f0;
+    border-color: #ddd;
+}
+
+.payment-methods input[type="radio"] {
+    margin-right: 15px;
+    transform: scale(1.2); /* Make radio button slightly larger */
+    accent-color: var(--primary-color, #3498db); /* Dynamic primary color */
+}
+
+.payment-methods label span {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #333;
+}
+
+.payment-methods label i {
+    margin-left: auto;
+    font-size: 1.3em;
+    color: #777;
+}
+
+.card-details-form {
+    display: none; /* Hidden by default */
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fcfcfc;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card-details-form.active {
+    display: block;
+}
+
+.card-details-form .form-group {
+    margin-bottom: 15px;
+}
+
+.card-details-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+    border: none; /* Override payment method label border */
+    background-color: transparent; /* Override payment method label background */
+    padding: 0;
+    cursor: default;
+}
+
+.card-details-form input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-details-form input[type="text"]:focus {
+    border-color: var(--primary-color, #3498db);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb, 52, 152, 219), 0.2);
+}
+
+.card-details-form .row {
+    display: flex;
+    gap: 15px;
+}
+
+.card-details-form .row .form-group {
+    flex: 1;
+}
+
+
+.place-order-btn, .home-btn {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    background-color: var(--primary-color, #3498db); /* Dynamic primary color or generic blue fallback */
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 30px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+.place-order-btn:hover, .home-btn:hover {
+    background-color: var(--primary-color-dark, #2a83bb); /* Darker primary color or generic dark blue fallback */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+.place-order-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+    opacity: 0.7;
+}
+
+.empty-cart-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    font-size: 1.1em;
+}
+
+.empty-cart-message h2 {
+    font-size: 2em;
+    color: var(--primary-color, #3498db); /* Dynamic primary color */
+    margin-bottom: 15px;
+}
+
+.empty-cart-message p {
+    margin-bottom: 25px;
+}
+
+.empty-cart-message a {
+    color: var(--primary-color, #3498db); /* Dynamic primary color */
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.order-confirmation-message {
+    text-align: center;
+    padding: 60px 20px;
+    display: none; /* Hidden by default */
+}
+
+.order-confirmation-message h2 {
+    font-size: 2.8em;
+    color: #4CAF50; /* Green for success */
+    margin-bottom: 20px;
+}
+
+.order-confirmation-message p {
+    font-size: 1.4em;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+/* Specific styles for the "No Restaurant Data" state */
+.no-restaurant-data-message {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+}
+.no-restaurant-data-message h2 {
+    color: #d9534f; /* A warning red */
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+.no-restaurant-data-message p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 25px;
+}
+.no-restaurant-data-message .home-btn {
+    display: inline-block;
+    width: auto;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    margin-top: 0; /* Override default button margin */
+}
+
+/* Hide sections when no restaurant data is available */
+.checkout-section.hidden {
+    display: none;
+}
+
+/* Responsive Adjustments (Universal) */
+@media (max-width: 992px) {
+    .menu-content-area { /* Placeholder, assuming other pages also use this */
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .left-sidebar { /* Placeholder */
+        width: 100%;
+        position: static;
+        top: auto;
+    }
+
+    .checkout-header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .checkout-header .nav-link.cart-link {
+        font-size: 1.2em; /* Smaller cart icon on smaller screens */
+    }
+
+    .checkout-main .container {
+        padding: 0 15px;
+    }
+
+    .checkout-header h1 {
+        font-size: 1.8em;
+    }
+
+    .checkout-header p {
+        font-size: 1em;
+    }
+
+    .order-item .item-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .order-item .item-info h4 {
+        font-size: 1em;
+    }
+
+    .order-item .item-info p {
+        font-size: 0.8em;
+    }
+
+    .order-item .item-total-price {
+        font-size: 1.1em;
+    }
+
+    .summary-line {
+        font-size: 0.9em;
+    }
+
+    .summary-line.total-line {
+        font-size: 1.1em;
+    }
+    
+    .place-order-btn, .home-btn {
+        font-size: 1.1em;
+        padding: 12px;
+    }
+
+    .order-confirmation-message h2 {
+        font-size: 2em;
+    }
+
+    .order-confirmation-message p {
+        font-size: 1em;
+    }
+
+    /* Adjust padding for small screens */
+    .checkout-section {
+        padding: 20px;
+    }
+    .no-restaurant-data-message {
+        padding: 30px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .restaurant-summary {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    .restaurant-logo {
+        margin-bottom: 10px;
+    }
+    .restaurant-details h1 {
+        font-size: 1.8em;
+    }
+    .delivery-info {
+        font-size: 0.9em;
+    }
+    .order-item {
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+    }
+    .order-item .item-info {
+        text-align: center;
+        flex-basis: 100%;
+        margin-top: 10px;
+    }
+    .order-item .item-image {
+        margin-right: 0;
+    }
+}

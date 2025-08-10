@@ -1,0 +1,391 @@
+/*
+ * This file is for styling the specific layout and components
+ * of the checkout page.
+ */
+
+/* Main layout for the checkout page */
+.checkout-main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Page Title styling */
+.page-title {
+    font-size: 2.5em; /* Increased from 2em for prominence */
+    font-family: 'Montserrat', sans-serif; /* Consistent with header */
+    color: #333; /* Default text color */
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color, #3498db); /* Dynamic underline */
+    padding-bottom: 15px; /* Increased padding */
+    margin-bottom: 30px; /* Increased margin */
+}
+
+/* Breadcrumbs styling */
+.breadcrumbs {
+    font-size: 0.95em; /* Slightly larger for readability */
+    color: #777;
+    margin-bottom: 20px; /* Increased margin */
+    padding: 10px 0; /* Add some padding */
+    background-color: #f8f8f8; /* Light background */
+    border-bottom: 1px solid #eee; /* Subtle border */
+    display: flex; /* For proper alignment */
+    align-items: center;
+    padding-left: 20px; /* Indent slightly */
+}
+
+.breadcrumbs a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumbs a:hover {
+    color: var(--primary-color, #3498db); /* Hover color from primary */
+    text-decoration: underline;
+}
+
+.breadcrumbs .fas { /* Icon separator */
+    margin: 0 8px;
+    font-size: 0.8em;
+    color: #bbb;
+}
+
+
+/* Layout for left and right columns on checkout */
+.checkout-sections {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start; /* Aligns content to the top */
+}
+
+.checkout-left-column {
+    flex: 2; /* Takes up 2/3 of space */
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Stronger shadow */
+}
+
+.checkout-right-column {
+    flex: 1; /* Takes up 1/3 of space */
+    position: sticky; /* Keeps it in place when scrolling */
+    top: 20px; /* Space from the top */
+}
+
+/* Restaurant Summary Section */
+.restaurant-summary {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Increased gap */
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.restaurant-summary img {
+    width: 80px; /* Larger logo */
+    height: 80px; /* Larger logo */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e0e0e0; /* Thicker border */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Added shadow to logo */
+}
+
+.restaurant-summary h3 {
+    margin: 0;
+    font-size: 1.8em; /* Larger heading */
+    color: #333; /* Main text color, not primary color here */
+    font-family: 'Poppins', sans-serif; /* Poppins added to head via CDN */
+}
+
+.restaurant-summary p {
+    margin: 5px 0 0;
+    font-size: 1.1em; /* Larger description */
+    color: #666; /* Softer color */
+}
+
+/* Your Order / Order Summary Box Headings */
+.your-order h3, .order-summary-box h3 {
+    font-size: 1.6em; /* Consistent heading size */
+    font-family: 'Poppins', sans-serif; /* Consistent font */
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0; /* Lighter border */
+}
+
+.order-items-container {
+    border-top: none; /* Removed redundant top border */
+    padding-top: 0; /* Removed redundant padding */
+}
+
+/* Individual Order Item Styling */
+.order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px dashed #eee; /* Lighter dashed border */
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.order-item .item-image {
+    width: 70px; /* Larger image */
+    height: 70px; /* Larger image */
+    object-fit: cover;
+    border-radius: 8px; /* Rounded corners */
+    margin-right: 15px;
+    border: 1px solid #ddd;
+}
+
+.order-item .item-info {
+    flex-grow: 1;
+}
+
+.order-item .item-info h4 {
+    margin: 0;
+    font-size: 1.1em; /* Larger item name */
+    color: #555;
+    font-weight: 500;
+}
+
+.order-item .item-info p {
+    margin: 5px 0 0;
+    font-size: 0.9em;
+    color: #888;
+}
+
+.order-item .item-total-price {
+    font-weight: bold;
+    color: var(--primary-color, #333); /* Uses primary color for price */
+    font-size: 1.2em; /* Larger price */
+}
+
+/* Order Summary Box */
+.order-summary-box {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px; /* More rounded */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Stronger shadow */
+}
+
+.summary-details .summary-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.summary-details .summary-line:first-of-type {
+    border-top: 1px solid #f0f0f0; /* Lighter top border */
+    padding-top: 15px;
+}
+
+.summary-details .summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4em;
+    font-weight: bold;
+    border-top: 2px solid var(--primary-color, #3498db); /* Solid border with primary color */
+    padding-top: 20px; /* Increased padding */
+    margin-top: 15px;
+    color: var(--primary-color, #333);
+}
+
+/* Place Order Button */
+.place-order-btn {
+    width: 100%;
+    padding: 18px; /* Larger padding */
+    font-size: 1.3em; /* Larger font */
+    font-weight: bold;
+    color: #fff;
+    background-color: var(--primary-color, #f44336);
+    border: none;
+    border-radius: 10px; /* More rounded */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Added transform and shadow */
+    margin-top: 30px; /* Increased margin */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25); /* Added shadow */
+}
+
+.place-order-btn:hover {
+    background-color: var(--primary-color-dark, #d32f2f);
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35); /* Stronger shadow on hover */
+}
+
+.place-order-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none; /* No shadow when disabled */
+    transform: none; /* No lift when disabled */
+    opacity: 0.7;
+}
+
+/* No Data and Order Confirmation Messages */
+.no-data-message, .order-confirmation-message {
+    text-align: center;
+    padding: 50px;
+    background-color: #fff;
+    border-radius: 12px; /* More rounded */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-top: 50px;
+    max-width: 600px; /* Constrain width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.no-data-message p, .order-confirmation-message p {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.go-to-home-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--primary-color, #f44336);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2); /* Added shadow */
+}
+
+.go-to-home-btn:hover {
+    background-color: var(--primary-color-dark, #d32f2f);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Header and Cart Icon adjustments */
+header .header-container {
+    justify-content: space-between;
+    padding: 15px 20px; /* Match universal-styles if it's external */
+    background-color: #ffffff; /* Explicitly set */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Soft shadow */
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.user-actions .cart-icon {
+    position: relative;
+    padding: 5px;
+    font-size: 1.6em; /* Larger icon */
+    color: var(--primary-color, #333); /* Use primary color if available */
+}
+
+/* This is the span for the item count on the cart icon */
+.user-actions .cart-icon #cart-item-count { /* This ID should ideally be distinct for the header vs sidebar */
+    position: absolute;
+    top: -8px; /* Adjusted position */
+    right: -8px; /* Adjusted position */
+    background-color: #4CAF50; /* Green for count, consistent */
+    color: #fff;
+    border-radius: 50%;
+    padding: 3px 7px; /* Adjust padding for a good circle */
+    font-size: 0.7em; /* Smaller font for number */
+    font-weight: bold;
+    min-width: 22px; /* Ensure it's always a circle */
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .checkout-sections {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .checkout-right-column {
+        position: static; /* Remove sticky on smaller screens */
+        top: auto;
+        width: 100%;
+    }
+    .page-title {
+        font-size: 2em;
+    }
+    .restaurant-summary h3 {
+        font-size: 1.5em;
+    }
+    .your-order h3, .order-summary-box h3 {
+        font-size: 1.4em;
+    }
+    .order-item .item-image {
+        width: 60px;
+        height: 60px;
+    }
+    .order-item .item-info h4 {
+        font-size: 1em;
+    }
+    .order-item .item-total-price {
+        font-size: 1.1em;
+    }
+    .summary-details .summary-line {
+        font-size: 0.9em;
+    }
+    .summary-details .summary-total {
+        font-size: 1.2em;
+    }
+    .place-order-btn, .go-to-home-btn {
+        font-size: 1.1em;
+        padding: 12px;
+    }
+    .no-data-message, .order-confirmation-message {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .breadcrumbs {
+        padding: 10px 15px;
+        font-size: 0.85em;
+    }
+    .checkout-main {
+        padding: 0 15px;
+    }
+    .restaurant-summary {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    .restaurant-summary img {
+        margin-bottom: 10px;
+    }
+    .order-item {
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+    }
+    .order-item .item-info {
+        flex-basis: 100%;
+        margin-top: 10px;
+        text-align: center;
+    }
+    .order-item .item-image {
+        margin-right: 0;
+    }
+    .place-order-btn, .go-to-home-btn {
+        font-size: 1em;
+        padding: 10px;
+    }
+    .no-data-message, .order-confirmation-message {
+        padding: 20px;
+    }
+}

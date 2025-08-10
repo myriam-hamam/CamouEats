@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Checkout | CampuEats</title>
+    <link rel="icon" id="favicon-link" href="" type="image/jpg">
+    <link rel="stylesheet" href="css/universal-styles.css"> 
+    <link rel="stylesheet" href="css/checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS variables for dynamic colors - default values if no restaurant data loads */
+        :root {
+            --primary-color: #3498db; /* Default generic blue */
+            --primary-color-rgb: 52, 152, 219; /* Default generic blue RGB for rgba() */
+            --primary-color-dark: #2a83bb; /* Default darker generic blue */
+        }
+        /* Essential layout styles that might not be in universal-styles.css or checkout.css */
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .header-container .logo img {
+            height: 50px; /* Adjust logo size */
+            width: auto;
+        }
+        .user-actions .cart-icon {
+            position: relative;
+            font-size: 1.5em; /* Adjust icon size */
+            color: #333;
+            text-decoration: none;
+            display: flex; /* To correctly position count span */
+            align-items: center;
+        }
+        .user-actions .cart-icon #cart-item-count { /* This is the count span */
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 0.7em;
+            font-weight: bold;
+            border-radius: 50%;
+            padding: 3px 7px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            min-width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .breadcrumbs {
+            padding: 15px 20px;
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 20px;
+        }
+        .breadcrumbs a {
+            color: #777;
+            text-decoration: none;
+        }
+        .breadcrumbs a:hover {
+            color: #555;
+        }
+        .breadcrumbs > a + a::before {
+            content: ' > ';
+            margin: 0 5px;
+            color: #aaa;
+        }
+        .page-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 30px;
+            font-family: 'Poppins', sans-serif; /* Poppins added to head via CDN */
+        }
+        .no-data-message {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin: 30px auto;
+            max-width: 600px;
+        }
+        .no-data-message p {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 25px;
+        }
+        .no-data-message .go-to-home-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .no-data-message .go-to-home-btn:hover {
+            background-color: var(--primary-color-dark);
+            transform: translateY(-2px);
+        }
+        .checkout-sections {
+            display: flex;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .checkout-left-column {
+            flex: 2;
+        }
+        .checkout-right-column {
+            flex: 1;
+            min-width: 300px;
+        }
+        .restaurant-summary, .your-order, .order-summary-box {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+        .restaurant-summary {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .restaurant-summary img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e0e0e0;
+        }
+        .restaurant-summary h3 {
+            font-size: 1.8em;
+            margin: 0;
+            color: #333;
+        }
+        .restaurant-summary p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        .your-order h3, .order-summary-box h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6em;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .order-items-container .order-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        .order-items-container .order-item:last-child {
+            border-bottom: none;
+        }
+        .order-item .item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 1px solid #ddd;
+        }
+        .order-item .item-info {
+            flex-grow: 1;
+        }
+        .order-item .item-info h4 {
+            margin: 0 0 5px;
+            font-size: 1.1em;
+            color: #555;
+            font-weight: 500;
+        }
+        .order-item .item-info p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #888;
+        }
+        .order-item .item-total-price {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.1em;
+        }
+        .summary-details .summary-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 1.1em;
+            color: #555;
+        }
+        .summary-details .summary-line:first-of-type {
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+        .summary-details .summary-total {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+            margin-top: 15px;
+            border-top: 2px solid var(--primary-color);
+            font-size: 1.4em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .place-order-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 20px;
+        }
+        .place-order-btn:hover {
+            background-color: var(--primary-color-dark);
+            transform: translateY(-2px);
+        }
+        .place-order-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            opacity: 0.7;
+            transform: none;
+        }
+        .order-confirmation-message {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .order-confirmation-message h3 {
+            font-size: 2em;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        .order-confirmation-message p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .order-confirmation-message .go-to-home-btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .order-confirmation-message .go-to-home-btn:hover {
+            background-color: #388e3c;
+            transform: translateY(-2px);
+        }
+        .hidden {
+            display: none;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .checkout-sections {
+                flex-direction: column;
+            }
+            .checkout-right-column {
+                min-width: unset;
+                width: 100%;
+            }
+        }
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2em;
+            }
+            .restaurant-summary h3 {
+                font-size: 1.5em;
+            }
+            .your-order h3, .order-summary-box h3 {
+                font-size: 1.4em;
+            }
+            .order-item .item-info h4 {
+                font-size: 0.9em;
+            }
+            .order-item .item-total-price {
+                font-size: 1em;
+            }
+            .summary-details .summary-total {
+                font-size: 1.2em;
+            }
+            .place-order-btn {
+                font-size: 1.1em;
+                padding: 12px;
+            }
+        }
+        @media (max-width: 480px) {
+            .header-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .breadcrumbs {
+                padding: 10px 15px;
+            }
+            .checkout-sections {
+                padding: 0 15px;
+            }
+            .restaurant-summary {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            .restaurant-summary img {
+                margin-bottom: 10px;
+            }
+            .order-item {
+                flex-wrap: wrap;
+                text-align: center;
+                justify-content: center;
+            }
+            .order-item .item-info {
+                flex-basis: 100%;
+                margin-top: 10px;
+            }
+            .order-item .item-image {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="entry.html">
+                    <img src="images/LOGO.JPG" alt="CampuEats Logo" onerror="this.onerror=null;this.src='https://placehold.co/50x50/CCCCCC/666666?text=LOGO';">
+                </a>
+            </div>
+            <nav>
+            </nav>
+            <div class="user-actions">
+                <a href="checkout.html" class="cart-icon">
+                    <span id="cart-item-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="checkout-main">
+        <div class="breadcrumbs">
+            <a href="entry.html">Home</a> &gt; <a id="breadcrumb-restaurant-link" href="order_now.html">Restaurant</a> &gt; Checkout
+        </div>
+        
+        <h2 class="page-title">Checkout</h2>
+
+        <div id="no-data-message" class="no-data-message hidden">
+            <p>Your cart is empty. Please add items before checking out.</p>
+            <a href="entry.html" class="go-to-home-btn">Go to Home Page</a>
+        </div>
+
+        <div id="checkout-sections" class="checkout-sections">
+            <div class="checkout-left-column">
+                <section class="restaurant-summary">
+                    <img id="restaurant-logo" src="" alt="Restaurant Logo" onerror="this.onerror=null;this.src='https://placehold.co/80x80/CCCCCC/666666?text=LOGO';">
+                    <div class="restaurant-info">
+                        <h3 id="restaurant-name">Restaurant Name</h3>
+                        <p id="delivery-info">Estimated delivery: 30-45 mins</p>
+                    </div>
+                </section>
+        
+                <section class="your-order">
+                    <h3>Your Order</h3>
+                    <div id="order-items" class="order-items-container">
+                        </div>
+                </section>
+            </div>
+    
+            <div class="checkout-right-column">
+                <section class="order-summary-box">
+                    <h3>Order Summary</h3>
+                    <div class="summary-details">
+                        <div class="summary-line">
+                            <span>Subtotal:</span>
+                            <span id="summary-subtotal">EGP 0.00</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Delivery Fee:</span>
+                            <span id="summary-delivery">EGP 0.00</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Tax:</span>
+                            <span id="summary-tax">EGP 0.00</span>
+                        </div>
+                        <div class="summary-total">
+                            <span>Total:</span>
+                            <span id="summary-total">EGP 0.00</span>
+                        </div>
+                    </div>
+                    
+                    <button id="place-order-btn" class="place-order-btn" disabled>Place Order</button>
+                </section>
+            </div>
+        </div>
+
+        <div id="order-confirmation" class="order-confirmation-message hidden">
+            <h3>Thank you! Your order has been placed successfully.</h3>
+            <p>Your order is being processed.</p>
+            <a href="entry.html" class="go-to-home-btn">Return to Home</a>
+        </div>
+    </main>
+
+    <footer>
+    </footer>
+
+    <script src="js/checkout.js"></script>
+</body>
+</html>

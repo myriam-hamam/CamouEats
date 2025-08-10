@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>McDonald's Menu – CampuEats</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0ffe0, #f7fff7);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header {
+      background: linear-gradient(135deg, #ffc107, #ff9800);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .main-content {
+      display: flex;
+      min-height: 600px;
+    }
+
+    .menu-section {
+      flex: 2;
+      padding: 30px;
+    }
+
+    .cart-section {
+      flex: 1;
+      background-color: #f8f9fa;
+      padding: 30px;
+      border-left: 1px solid #eee;
+    }
+
+    .menu-category {
+      margin-bottom: 40px;
+    }
+
+    .menu-category h2 {
+      color: #ff9800;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ff9800;
+      padding-bottom: 10px;
+    }
+
+    .menu-item {
+      background-color: white;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 15px;
+      transition: all 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .menu-item:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+
+    .item-info {
+      margin-bottom: 15px;
+    }
+
+    .item-name {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .item-description {
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .item-price {
+      font-weight: bold;
+      color: #ff9800;
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+
+    .size-options {
+      margin-bottom: 15px;
+    }
+
+    .size-options label {
+      display: inline-block;
+      margin-right: 15px;
+      font-weight: 500;
+    }
+
+    .size-options input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .quantity-selector button {
+      background: #ff9800;
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quantity-selector button:hover {
+      background: #f57c00;
+    }
+
+    .quantity-selector span {
+      font-weight: bold;
+      min-width: 30px;
+      text-align: center;
+    }
+
+    .add-to-cart-btn {
+      background: #ff9800;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    .add-to-cart-btn:hover {
+      background: #f57c00;
+    }
+
+    .add-to-cart-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .cart-title {
+      color: #ff9800;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .cart-items {
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .cart-item-name {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .cart-item-details {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .cart-item-price {
+      font-weight: bold;
+      color: #ff9800;
+    }
+
+    .cart-total {
+      border-top: 2px solid #ff9800;
+      padding-top: 15px;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .cart-total h3 {
+      color: #ff9800;
+      margin-bottom: 10px;
+    }
+
+    .checkout-btn {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+
+    .checkout-btn:hover {
+      background: #388e3c;
+    }
+
+    .checkout-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .back-btn {
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      background-color: #ff9800;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.3s;
+      margin: 20px;
+    }
+
+    .back-btn:hover {
+      background-color: #f57c00;
+      transform: translateY(-2px);
+    }
+
+    .empty-cart {
+      text-align: center;
+      color: #666;
+      font-style: italic;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1><i class="fas fa-hamburger"></i> McDonald's</h1>
+      <p>I'm Lovin' It!</p>
+    </div>
+
+    <div class="main-content">
+      <div class="menu-section">
+        <div class="menu-category">
+          <h2>Burgers</h2>
+          
+          <div class="menu-item" data-name="Big Mac" data-base-price="89">
+            <div class="item-info">
+              <div class="item-name">Big Mac</div>
+              <div class="item-description">Two beef patties with special sauce, lettuce, cheese, pickles, onions on a sesame seed bun</div>
+              <div class="item-price">EGP 89</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="bigmac-size" value="single" checked> Single</label>
+              <label><input type="radio" name="bigmac-size" value="double"> Double (+EGP 25)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('bigmac', -1)">-</button>
+              <span id="bigmac-qty">1</span>
+              <button onclick="changeQuantity('bigmac', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('bigmac')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Quarter Pounder" data-base-price="79">
+            <div class="item-info">
+              <div class="item-name">Quarter Pounder</div>
+              <div class="item-description">Quarter pound beef patty with cheese, onions, pickles, mustard, ketchup</div>
+              <div class="item-price">EGP 79</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="quarter-size" value="single" checked> Single</label>
+              <label><input type="radio" name="quarter-size" value="double"> Double (+EGP 20)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('quarter', -1)">-</button>
+              <span id="quarter-qty">1</span>
+              <button onclick="changeQuantity('quarter', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('quarter')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="McChicken" data-base-price="69">
+            <div class="item-info">
+              <div class="item-name">McChicken</div>
+              <div class="item-description">Crispy chicken patty with lettuce and mayo on a toasted bun</div>
+              <div class="item-price">EGP 69</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="mcchicken-size" value="single" checked> Single</label>
+              <label><input type="radio" name="mcchicken-size" value="double"> Double (+EGP 15)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('mcchicken', -1)">-</button>
+              <span id="mcchicken-qty">1</span>
+              <button onclick="changeQuantity('mcchicken', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('mcchicken')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Filet-O-Fish" data-base-price="75">
+            <div class="item-info">
+              <div class="item-name">Filet-O-Fish</div>
+              <div class="item-description">Fish fillet with tartar sauce and cheese on a steamed bun</div>
+              <div class="item-price">EGP 75</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="filet-size" value="single" checked> Single</label>
+              <label><input type="radio" name="filet-size" value="double"> Double (+EGP 20)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('filet', -1)">-</button>
+              <span id="filet-qty">1</span>
+              <button onclick="changeQuantity('filet', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('filet')">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h2>Chicken & Nuggets</h2>
+          
+          <div class="menu-item" data-name="Chicken McNuggets" data-base-price="65">
+            <div class="item-info">
+              <div class="item-name">Chicken McNuggets</div>
+              <div class="item-description">Crispy chicken nuggets with your choice of dipping sauce</div>
+              <div class="item-price">EGP 65</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="nuggets-size" value="6pc" checked> 6 Pieces</label>
+              <label><input type="radio" name="nuggets-size" value="9pc"> 9 Pieces (+EGP 15)</label>
+              <label><input type="radio" name="nuggets-size" value="20pc"> 20 Pieces (+EGP 35)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('nuggets', -1)">-</button>
+              <span id="nuggets-qty">1</span>
+              <button onclick="changeQuantity('nuggets', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('nuggets')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="McChicken Deluxe" data-base-price="85">
+            <div class="item-info">
+              <div class="item-name">McChicken Deluxe</div>
+              <div class="item-description">Crispy chicken with lettuce, tomato, and mayo on a toasted bun</div>
+              <div class="item-price">EGP 85</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="deluxe-size" value="single" checked> Single</label>
+              <label><input type="radio" name="deluxe-size" value="double"> Double (+EGP 20)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('deluxe', -1)">-</button>
+              <span id="deluxe-qty">1</span>
+              <button onclick="changeQuantity('deluxe', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('deluxe')">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h2>Fries & Sides</h2>
+          
+          <div class="menu-item" data-name="French Fries" data-base-price="25">
+            <div class="item-info">
+              <div class="item-name">French Fries</div>
+              <div class="item-description">Golden crispy fries with a sprinkle of salt</div>
+              <div class="item-price">EGP 25</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="fries-size" value="small" checked> Small</label>
+              <label><input type="radio" name="fries-size" value="medium"> Medium (+EGP 10)</label>
+              <label><input type="radio" name="fries-size" value="large"> Large (+EGP 20)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('fries', -1)">-</button>
+              <span id="fries-qty">1</span>
+              <button onclick="changeQuantity('fries', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('fries')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Onion Rings" data-base-price="30">
+            <div class="item-info">
+              <div class="item-name">Onion Rings</div>
+              <div class="item-description">Crispy battered onion rings</div>
+              <div class="item-price">EGP 30</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="onion-size" value="small" checked> Small</label>
+              <label><input type="radio" name="onion-size" value="large"> Large (+EGP 15)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('onion', -1)">-</button>
+              <span id="onion-qty">1</span>
+              <button onclick="changeQuantity('onion', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('onion')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Apple Slices" data-base-price="20">
+            <div class="item-info">
+              <div class="item-name">Apple Slices</div>
+              <div class="item-description">Fresh apple slices - a healthy choice</div>
+              <div class="item-price">EGP 20</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="apple-size" value="small" checked> Small</label>
+              <label><input type="radio" name="apple-size" value="large"> Large (+EGP 10)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('apple', -1)">-</button>
+              <span id="apple-qty">1</span>
+              <button onclick="changeQuantity('apple', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('apple')">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h2>Drinks & Desserts</h2>
+          
+          <div class="menu-item" data-name="Soft Drinks" data-base-price="15">
+            <div class="item-info">
+              <div class="item-name">Soft Drinks</div>
+              <div class="item-description">Coca-Cola, Sprite, Fanta, or Diet Coke</div>
+              <div class="item-price">EGP 15</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="drink-size" value="small" checked> Small</label>
+              <label><input type="radio" name="drink-size" value="medium"> Medium (+EGP 5)</label>
+              <label><input type="radio" name="drink-size" value="large"> Large (+EGP 10)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('drink', -1)">-</button>
+              <span id="drink-qty">1</span>
+              <button onclick="changeQuantity('drink', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('drink')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="McFlurry" data-base-price="35">
+            <div class="item-info">
+              <div class="item-name">McFlurry</div>
+              <div class="item-description">Creamy vanilla soft serve with your choice of toppings</div>
+              <div class="item-price">EGP 35</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="mcflurry-size" value="small" checked> Small</label>
+              <label><input type="radio" name="mcflurry-size" value="medium"> Medium (+EGP 10)</label>
+              <label><input type="radio" name="mcflurry-size" value="large"> Large (+EGP 20)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('mcflurry', -1)">-</button>
+              <span id="mcflurry-qty">1</span>
+              <button onclick="changeQuantity('mcflurry', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('mcflurry')">Add to Cart</button>
+          </div>
+
+          <div class="menu-item" data-name="Apple Pie" data-base-price="25">
+            <div class="item-info">
+              <div class="item-name">Apple Pie</div>
+              <div class="item-description">Warm apple pie with a flaky crust</div>
+              <div class="item-price">EGP 25</div>
+            </div>
+            <div class="size-options">
+              <label><input type="radio" name="pie-size" value="single" checked> Single</label>
+              <label><input type="radio" name="pie-size" value="double"> Double (+EGP 15)</label>
+            </div>
+            <div class="quantity-selector">
+              <button onclick="changeQuantity('pie', -1)">-</button>
+              <span id="pie-qty">1</span>
+              <button onclick="changeQuantity('pie', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('pie')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-section">
+        <h2 class="cart-title"><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+        <div id="cart-items" class="cart-items">
+          <div class="empty-cart">Your cart is empty</div>
+        </div>
+        <div class="cart-total">
+          <h3>Total: <span id="cart-total">EGP 0</span></h3>
+          <button class="checkout-btn" id="checkout-btn" onclick="checkout()" disabled>Checkout</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; padding-bottom: 20px;">
+      <a href="outside.html" class="back-btn">⬅ Back to Outside Restaurants</a>
+    </div>
+  </div>
+
+  <script>
+    let cart = [];
+    let quantities = {
+      bigmac: 1, quarter: 1, mcchicken: 1, filet: 1,
+      nuggets: 1, deluxe: 1, fries: 1, onion: 1,
+      apple: 1, drink: 1, mcflurry: 1, pie: 1
+    };
+
+    function changeQuantity(item, change) {
+      const newQty = quantities[item] + change;
+      if (newQty >= 1 && newQty <= 10) {
+        quantities[item] = newQty;
+        document.getElementById(item + '-qty').textContent = newQty;
+      }
+    }
+
+    function addToCart(itemType) {
+      const menuItem = document.querySelector(`[data-name*="${getItemName(itemType)}"]`);
+      const sizeInputs = document.querySelectorAll(`input[name="${itemType}-size"]`);
+      let selectedSize = 'small';
+      
+      sizeInputs.forEach(input => {
+        if (input.checked) {
+          selectedSize = input.value;
+        }
+      });
+
+      const basePrice = parseInt(menuItem.dataset.basePrice);
+      let finalPrice = basePrice;
+      
+      // Calculate price based on size/type
+      if (selectedSize === 'medium' || selectedSize === '9pc' || selectedSize === 'double') {
+        if (itemType === 'bigmac') {
+          finalPrice += 25;
+        } else if (itemType === 'quarter') {
+          finalPrice += 20;
+        } else if (itemType === 'mcchicken') {
+          finalPrice += 15;
+        } else if (itemType === 'filet') {
+          finalPrice += 20;
+        } else if (itemType === 'nuggets') {
+          finalPrice += 15;
+        } else if (itemType === 'deluxe') {
+          finalPrice += 20;
+        } else if (itemType === 'fries') {
+          finalPrice += 10;
+        } else if (itemType === 'drink') {
+          finalPrice += 5;
+        } else if (itemType === 'mcflurry') {
+          finalPrice += 10;
+        } else if (itemType === 'pie') {
+          finalPrice += 15;
+        }
+      } else if (selectedSize === 'large' || selectedSize === '20pc') {
+        if (itemType === 'nuggets') {
+          finalPrice += 35;
+        } else if (itemType === 'fries') {
+          finalPrice += 20;
+        } else if (itemType === 'drink') {
+          finalPrice += 10;
+        } else if (itemType === 'mcflurry') {
+          finalPrice += 20;
+        }
+      } else if (selectedSize === 'large' && (itemType === 'onion' || itemType === 'apple')) {
+        finalPrice += 15;
+      } else if (selectedSize === 'large' && itemType === 'apple') {
+        finalPrice += 10;
+      }
+
+      const quantity = quantities[itemType];
+      const totalPrice = finalPrice * quantity;
+
+      const cartItem = {
+        name: getItemName(itemType),
+        size: selectedSize,
+        quantity: quantity,
+        price: finalPrice,
+        total: totalPrice
+      };
+
+      cart.push(cartItem);
+      updateCartDisplay();
+      resetQuantity(itemType);
+      
+      // Show success message
+      const btn = event.target;
+      const originalText = btn.textContent;
+      btn.textContent = 'Added!';
+      btn.style.background = '#4CAF50';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '#ff9800';
+      }, 1000);
+    }
+
+    function getItemName(itemType) {
+      const names = {
+        bigmac: 'Big Mac',
+        quarter: 'Quarter Pounder',
+        mcchicken: 'McChicken',
+        filet: 'Filet-O-Fish',
+        nuggets: 'Chicken McNuggets',
+        deluxe: 'McChicken Deluxe',
+        fries: 'French Fries',
+        onion: 'Onion Rings',
+        apple: 'Apple Slices',
+        drink: 'Soft Drinks',
+        mcflurry: 'McFlurry',
+        pie: 'Apple Pie'
+      };
+      return names[itemType];
+    }
+
+    function resetQuantity(itemType) {
+      quantities[itemType] = 1;
+      document.getElementById(itemType + '-qty').textContent = '1';
+    }
+
+    function updateCartDisplay() {
+      const cartContainer = document.getElementById('cart-items');
+      const checkoutBtn = document.getElementById('checkout-btn');
+      
+      if (cart.length === 0) {
+        cartContainer.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+        checkoutBtn.disabled = true;
+        return;
+      }
+
+      let cartHTML = '';
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        cartHTML += `
+          <div class="cart-item">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-details">Size: ${item.size.charAt(0).toUpperCase() + item.size.slice(1)} | Qty: ${item.quantity}</div>
+            <div class="cart-item-price">EGP ${item.total}</div>
+            <button onclick="removeFromCart(${index})" style="background: #f44336; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-top: 5px;">Remove</button>
+          </div>
+        `;
+        total += item.total;
+      });
+
+      cartContainer.innerHTML = cartHTML;
+      document.getElementById('cart-total').textContent = `EGP ${total}`;
+      checkoutBtn.disabled = false;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartDisplay();
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      
+      const total = cart.reduce((sum, item) => sum + item.total, 0);
+      alert(`Order placed successfully!\nTotal: EGP ${total}\nThank you for choosing McDonald's!`);
+      
+      // Clear cart
+      cart = [];
+      updateCartDisplay();
+    }
+  </script>
+
+</body>
+</html> 

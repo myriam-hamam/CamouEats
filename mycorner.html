@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Corner | Menu</title>
+    <link rel="stylesheet" href="css/mycorner.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="#" class="logo-link">
+                <img src="images/mycorner2-logo.jpg" alt="My Corner Logo" class="mycorner-logo">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="#fried-items">FRIED ITEMS</a></li>
+                    <li><a href="#omelets">OMELETS</a></li>
+                    <li><a href="#drinks">DRINKS</a></li>
+                    <li><a href="#extras">EXTRAS</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <img src="images/LOGO.JPG" alt="CampuEats Logo" class="campueats-logo">
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="cover-image-container">
+        <img src="images/mycorner-cover.jpg" alt="My Corner Cover Image" class="cover-image">
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="content-layout">
+                <section class="menu-sections">
+                    <h2 id="fried-items">Fried Items</h2>
+                    <div class="menu-grid" id="fried-items-container">
+                        </div>
+
+                    <h2 id="omelets">Omelets</h2>
+                    <div class="menu-grid" id="omelets-container">
+                        </div>
+
+                    <h2 id="drinks">Drinks</h2>
+                    <div class="menu-grid" id="drinks-container">
+                        </div>
+
+                    <h2 id="extras">Extras</h2>
+                    <div class="menu-grid" id="extras-container">
+                        </div>
+                </section>
+
+                <aside class="cart-sidebar">
+                    <h3>Your Cart</h3>
+                    <div id="cart-items">
+                        <p class="empty-cart-message">Your cart is empty.</p>
+                    </div>
+                    <div class="cart-summary">
+                        <p id="total-items">0 items</p>
+                        <p id="total-price">EGP 0.00</p>
+                    </div>
+                    <button class="checkout-btn" disabled>Checkout</button>
+                </aside>
+            </div>
+        </div>
+    </main>
+    
+    <script src="js/mycorner.js"></script>
+</body>
+</html>

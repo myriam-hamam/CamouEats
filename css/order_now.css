@@ -1,0 +1,170 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    /* Background image for the entire page */
+    background-image: url('https://i.postimg.cc/1zP5rF6M/background.jpg');
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Keep background fixed when scrolling */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Hide scrollbars if content overflows */
+    color: #333;
+    position: relative; /* Needed for overlay positioning */
+}
+
+/* Overlay to improve text readability over background image */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+    z-index: -1; /* Place behind content */
+}
+
+.order-container {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white background */
+    padding: 60px 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* More pronounced shadow */
+    text-align: center;
+    width: 90%;
+    max-width: 650px; /* Slightly larger container */
+    animation: fadeInScale 0.8s ease-out forwards; /* Smoother animation */
+    z-index: 1; /* Ensure container is above the overlay */
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.order-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem; /* Larger, more impactful title */
+    color: #2c3e50; /* Darker, more professional blue-grey */
+    margin-bottom: 20px;
+    animation: slideInFromTop 0.8s ease-out 0.2s forwards; /* Animation for title */
+    opacity: 0;
+}
+
+.order-description {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 40px; /* More space below description */
+    line-height: 1.6;
+    animation: fadeIn 1s ease-out 0.4s forwards; /* Animation for description */
+    opacity: 0;
+}
+
+.order-buttons {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically by default */
+    gap: 20px; /* Space between buttons */
+    width: 100%;
+    max-width: 400px; /* Max width for button group */
+    margin: 0 auto; /* Center the buttons */
+}
+
+.order-btn {
+    display: block; /* Make buttons take full width of their container */
+    width: 100%;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px; /* Slightly less rounded */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Subtle button shadow */
+    animation: fadeIn 1s ease-out 0.6s forwards; /* Animation for buttons */
+    opacity: 0;
+}
+
+.order-btn:nth-child(2) {
+    animation-delay: 0.8s; /* Stagger animation for second button */
+}
+
+.primary-btn {
+    background-color: #4CAF50; /* Primary green */
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: #388e3c; /* Darker green on hover */
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.secondary-btn {
+    background-color: #f8f9fa; /* Light background for secondary */
+    color: #4CAF50; /* Green text for secondary */
+    border: 2px solid #4CAF50; /* Green border */
+}
+
+.secondary-btn:hover {
+    background-color: #e9ecef; /* Slightly darker background on hover */
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* General Fade In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Slide In From Top Animation */
+@keyframes slideInFromTop {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+
+/* Responsive adjustments */
+@media (min-width: 600px) {
+    .order-buttons {
+        flex-direction: row; /* Arrange buttons horizontally on larger screens */
+        justify-content: center;
+        max-width: none; /* Remove max-width when horizontal */
+    }
+    .order-btn {
+        flex: 1; /* Distribute space equally */
+        max-width: 280px; /* Limit individual button width */
+    }
+}
+
+@media (max-width: 480px) {
+    .order-container {
+        padding: 40px 25px;
+    }
+    .order-title {
+        font-size: 2rem;
+    }
+    .order-description {
+        font-size: 1rem;
+    }
+    .order-btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+}

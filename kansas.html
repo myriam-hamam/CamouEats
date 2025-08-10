@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kansas Restaurant Menu – CampuEats</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0ffe0, #f7fff7);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header {
+      background: linear-gradient(135deg, #2E8B57, #3CB371);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-circle {
+      width: 120px;
+      height: 120px;
+      background: #FFA500;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .logo-main-text {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #FF0000;
+      font-family: 'Arial Black', sans-serif;
+      letter-spacing: 2px;
+      margin-bottom: 5px;
+    }
+
+    .logo-sub-text {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #FF0000;
+      font-family: 'Arial Black', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .logo-triangle {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 6px solid #FF0000;
+    }
+
+    .triangle-1 {
+      top: 35px;
+      left: 25px;
+    }
+
+    .triangle-2 {
+      top: 35px;
+      left: 45px;
+    }
+
+    .triangle-3 {
+      top: 35px;
+      left: 65px;
+    }
+
+    .triangle-4 {
+      top: 75px;
+      left: 35px;
+    }
+
+    .triangle-5 {
+      top: 75px;
+      left: 55px;
+    }
+
+    .main-content {
+      padding: 30px;
+    }
+
+    .menu-category {
+      margin-bottom: 40px;
+    }
+
+    .menu-category h2 {
+      color: #2E8B57;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #2E8B57;
+      padding-bottom: 10px;
+    }
+
+    .menu-item {
+      background-color: white;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 15px;
+      transition: all 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .menu-item:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+
+    .item-info {
+      margin-bottom: 15px;
+    }
+
+    .item-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .item-description {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .item-price {
+      color: #2E8B57;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .item-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quantity-btn {
+      background: #2E8B57;
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .quantity-btn:hover {
+      background: #228B22;
+      transform: scale(1.1);
+    }
+
+    .quantity-display {
+      font-weight: bold;
+      color: #333;
+      min-width: 30px;
+      text-align: center;
+    }
+
+    .add-to-cart-btn {
+      background: linear-gradient(135deg, #2E8B57, #3CB371);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+      margin-left: auto;
+    }
+
+    .add-to-cart-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(46, 139, 87, 0.3);
+    }
+
+    .add-to-cart-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: #4CAF50;
+      color: white;
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: all 0.3s;
+      margin-top: 20px;
+    }
+
+    .back-btn:hover {
+      background: #388e3c;
+      transform: translateY(-2px);
+    }
+
+    /* Floating Cart Styles */
+    .floating-cart {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #2E8B57;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: all 0.3s;
+    }
+
+    .floating-cart:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+
+    .cart-icon {
+      font-size: 24px;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #ff4444;
+      color: white;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    /* Cart Modal Styles */
+    .cart-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .cart-modal.show {
+      display: flex;
+    }
+
+    .cart-content {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #2E8B57;
+    }
+
+    .cart-title {
+      color: #2E8B57;
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    .close-cart {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .close-cart:hover {
+      color: #2E8B57;
+    }
+
+    .cart-items {
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-item-info {
+      flex: 1;
+    }
+
+    .cart-item-name {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .cart-item-price {
+      color: #2E8B57;
+      font-weight: bold;
+    }
+
+    .cart-item-quantity {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cart-quantity-btn {
+      background: #2E8B57;
+      color: white;
+      border: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cart-quantity-btn:hover {
+      background: #228B22;
+    }
+
+    .cart-total {
+      border-top: 2px solid #2E8B57;
+      padding-top: 20px;
+      text-align: center;
+    }
+
+    .cart-total h3 {
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .checkout-btn {
+      background: linear-gradient(135deg, #2E8B57, #3CB371);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+    }
+
+    .checkout-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(46, 139, 87, 0.3);
+    }
+
+    .checkout-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .empty-cart {
+      text-align: center;
+      color: #666;
+      font-style: italic;
+      padding: 20px;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .floating-cart {
+      animation: float 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <div class="logo-container">
+        <div class="logo">
+          <div class="logo-circle">
+            <div class="logo-main-text">KANSAS</div>
+            <div class="logo-sub-text">FRIED CHICKEN</div>
+            <div class="logo-triangle triangle-1"></div>
+            <div class="logo-triangle triangle-2"></div>
+            <div class="logo-triangle triangle-3"></div>
+            <div class="logo-triangle triangle-4"></div>
+            <div class="logo-triangle triangle-5"></div>
+          </div>
+        </div>
+      </div>
+      <h1>Kansas Fried Chicken</h1>
+      <p>Authentic American BBQ and comfort food!</p>
+    </div>
+
+    <div class="main-content">
+      <div class="menu-category">
+        <h2>🍖 BBQ & Grilled</h2>
+        
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">BBQ Ribs</div>
+            <div class="item-description">Slow-cooked ribs with Kansas City BBQ sauce</div>
+            <div class="item-price">EGP 180</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('bbq-ribs', -1)">-</button>
+              <span class="quantity-display" id="bbq-ribs-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('bbq-ribs', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('bbq-ribs', 'BBQ Ribs', 180)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Smoked Brisket</div>
+            <div class="item-description">Tender smoked beef brisket with homemade rub</div>
+            <div class="item-price">EGP 200</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('smoked-brisket', -1)">-</button>
+              <span class="quantity-display" id="smoked-brisket-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('smoked-brisket', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('smoked-brisket', 'Smoked Brisket', 200)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Grilled Chicken</div>
+            <div class="item-description">Marinated chicken breast with BBQ glaze</div>
+            <div class="item-price">EGP 120</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('grilled-chicken', -1)">-</button>
+              <span class="quantity-display" id="grilled-chicken-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('grilled-chicken', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('grilled-chicken', 'Grilled Chicken', 120)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h2>🍔 Burgers</h2>
+        
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Kansas Classic Burger</div>
+            <div class="item-description">Beef patty with cheese, lettuce, tomato, and special sauce</div>
+            <div class="item-price">EGP 100</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('kansas-burger', -1)">-</button>
+              <span class="quantity-display" id="kansas-burger-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('kansas-burger', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('kansas-burger', 'Kansas Classic Burger', 100)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">BBQ Bacon Burger</div>
+            <div class="item-description">Beef patty with bacon, BBQ sauce, and onion rings</div>
+            <div class="item-price">EGP 130</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('bbq-bacon-burger', -1)">-</button>
+              <span class="quantity-display" id="bbq-bacon-burger-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('bbq-bacon-burger', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('bbq-bacon-burger', 'BBQ Bacon Burger', 130)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h2>🍟 Sides</h2>
+        
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">BBQ Baked Beans</div>
+            <div class="item-description">Slow-cooked beans with bacon and BBQ sauce</div>
+            <div class="item-price">EGP 40</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('bbq-beans', -1)">-</button>
+              <span class="quantity-display" id="bbq-beans-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('bbq-beans', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('bbq-beans', 'BBQ Baked Beans', 40)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Coleslaw</div>
+            <div class="item-description">Fresh cabbage slaw with creamy dressing</div>
+            <div class="item-price">EGP 25</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('coleslaw', -1)">-</button>
+              <span class="quantity-display" id="coleslaw-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('coleslaw', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('coleslaw', 'Coleslaw', 25)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Sweet Potato Fries</div>
+            <div class="item-description">Crispy sweet potato fries with seasoning</div>
+            <div class="item-price">EGP 35</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('sweet-potato-fries', -1)">-</button>
+              <span class="quantity-display" id="sweet-potato-fries-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('sweet-potato-fries', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('sweet-potato-fries', 'Sweet Potato Fries', 35)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h2>🥤 Beverages</h2>
+        
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Sweet Tea</div>
+            <div class="item-description">Southern-style sweetened iced tea</div>
+            <div class="item-price">EGP 20</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('sweet-tea', -1)">-</button>
+              <span class="quantity-display" id="sweet-tea-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('sweet-tea', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('sweet-tea', 'Sweet Tea', 20)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Lemonade</div>
+            <div class="item-description">Fresh squeezed lemonade</div>
+            <div class="item-price">EGP 25</div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="changeQuantity('lemonade', -1)">-</button>
+              <span class="quantity-display" id="lemonade-qty">1</span>
+              <button class="quantity-btn" onclick="changeQuantity('lemonade', 1)">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart('lemonade', 'Lemonade', 25)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <a href="outside (1).html" class="back-btn">⬅ Back to Restaurants</a>
+    </div>
+  </div>
+
+  <!-- Floating Cart Icon -->
+  <div class="floating-cart" onclick="openCart()">
+    <i class="fas fa-shopping-cart cart-icon"></i>
+    <div class="cart-badge" id="cart-badge">0</div>
+  </div>
+
+  <!-- Cart Modal -->
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-content">
+      <div class="cart-header">
+        <h2 class="cart-title"><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+        <button class="close-cart" onclick="closeCart()">&times;</button>
+      </div>
+      <div id="cart-items" class="cart-items">
+        <div class="empty-cart">Your cart is empty</div>
+      </div>
+      <div class="cart-total">
+        <h3>Total: <span id="cart-total">EGP 0</span></h3>
+        <button class="checkout-btn" id="checkout-btn" onclick="checkout()" disabled>Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let cart = [];
+    let quantities = {
+      'bbq-ribs': 1,
+      'smoked-brisket': 1,
+      'grilled-chicken': 1,
+      'kansas-burger': 1,
+      'bbq-bacon-burger': 1,
+      'bbq-beans': 1,
+      'coleslaw': 1,
+      'sweet-potato-fries': 1,
+      'sweet-tea': 1,
+      'lemonade': 1
+    };
+
+    function changeQuantity(itemId, change) {
+      const newQty = quantities[itemId] + change;
+      if (newQty >= 1 && newQty <= 10) {
+        quantities[itemId] = newQty;
+        document.getElementById(itemId + '-qty').textContent = newQty;
+      }
+    }
+
+    function addToCart(itemId, itemName, price) {
+      const quantity = quantities[itemId];
+      const totalPrice = price * quantity;
+
+      const cartItem = {
+        name: itemName,
+        quantity: quantity,
+        price: price,
+        total: totalPrice
+      };
+
+      cart.push(cartItem);
+      updateCartDisplay();
+      resetQuantity(itemId);
+      
+      // Show "Added!" feedback
+      const btn = event.target;
+      const originalText = btn.textContent;
+      btn.textContent = 'Added!';
+      btn.style.background = '#4CAF50';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+      }, 1000);
+    }
+
+    function resetQuantity(itemId) {
+      quantities[itemId] = 1;
+      document.getElementById(itemId + '-qty').textContent = '1';
+    }
+
+    function updateCartDisplay() {
+      const cartContainer = document.getElementById('cart-items');
+      const checkoutBtn = document.getElementById('checkout-btn');
+      const cartBadge = document.getElementById('cart-badge');
+      
+      // Update cart badge
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartBadge.textContent = totalItems;
+      cartBadge.style.display = totalItems > 0 ? 'flex' : 'none';
+      
+      if (cart.length === 0) {
+        cartContainer.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+        checkoutBtn.disabled = true;
+        return;
+      }
+
+      let cartHTML = '';
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        cartHTML += `
+          <div class="cart-item">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-details">Qty: ${item.quantity}</div>
+            <div class="cart-item-price">EGP ${item.total}</div>
+            <button onclick="removeFromCart(${index})" style="background: #f44336; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-top: 5px;">Remove</button>
+          </div>
+        `;
+        total += item.total;
+      });
+
+      cartContainer.innerHTML = cartHTML;
+      document.getElementById('cart-total').textContent = `EGP ${total}`;
+      checkoutBtn.disabled = false;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartDisplay();
+    }
+
+    function openCart() {
+      document.getElementById('cart-modal').classList.add('show');
+    }
+
+    function closeCart() {
+      document.getElementById('cart-modal').classList.remove('show');
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      
+      const total = cart.reduce((sum, item) => sum + item.total, 0);
+      alert(`Order placed successfully! Total: EGP ${total}\nThank you for choosing Kansas!`);
+      
+      // Clear cart
+      cart = [];
+      updateCartDisplay();
+      closeCart();
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('cart-modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeCart();
+      }
+    });
+  </script>
+
+</body>
+</html> 

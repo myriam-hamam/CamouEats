@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outside Campus Restaurants – CampuEats</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* Animated Background */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .floating-shapes {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .shape-1 {
+      width: 80px;
+      height: 80px;
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .shape-2 {
+      width: 120px;
+      height: 120px;
+      top: 60%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+
+    .shape-3 {
+      width: 60px;
+      height: 60px;
+      top: 40%;
+      left: 50%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+      padding: 50px 40px;
+      text-align: center;
+      animation: fadeIn 1.5s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header-section {
+      margin-bottom: 40px;
+    }
+
+    .header-icon {
+      font-size: 3rem;
+      color: #667eea;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .restaurants-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .restaurant-card {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 30px 25px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    }
+
+    .restaurant-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .restaurant-card:hover::before {
+      left: 100%;
+    }
+
+    .restaurant-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+    }
+
+    .restaurant-icon {
+      font-size: 2.5rem;
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+
+    .restaurant-name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .restaurant-desc {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      line-height: 1.4;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(102, 126, 234, 0.2);
+      color: #667eea;
+      padding: 15px 30px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid #667eea;
+    }
+
+    .back-btn:hover {
+      background: #667eea;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 30px;
+        margin: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .restaurants-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .restaurant-card {
+        padding: 25px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .header-icon {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Background -->
+  <div class="animated-bg">
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="header-section">
+      <div class="header-icon">
+        <i class="fas fa-store"></i>
+      </div>
+      <h1>Choose a Restaurant Outside Campus</h1>
+      <p class="subtitle">Discover amazing restaurants around your campus area</p>
+    </div>
+
+    <div class="restaurants-grid">
+      <a href="kfc.html" class="restaurant-card">
+        <div class="restaurant-icon">
+          <i class="fas fa-drumstick-bite"></i>
+        </div>
+        <div class="restaurant-name">KFC</div>
+        <div class="restaurant-desc">Finger lickin' good fried chicken</div>
+      </a>
+
+      <a href="mcdo.html" class="restaurant-card">
+        <div class="restaurant-icon">
+          <i class="fas fa-hamburger"></i>
+        </div>
+        <div class="restaurant-name">McDonald's</div>
+        <div class="restaurant-desc">I'm lovin' it - burgers and fries</div>
+      </a>
+
+      <a href="blbn.html" class="restaurant-card">
+        <div class="restaurant-icon">
+          <i class="fas fa-birthday-cake"></i>
+        </div>
+        <div class="restaurant-name">Blabn</div>
+        <div class="restaurant-desc">Delicious desserts and sweets</div>
+      </a>
+
+      <a href="buffalo.html" class="restaurant-card">
+        <div class="restaurant-icon">
+          <i class="fas fa-hamburger"></i>
+        </div>
+        <div class="restaurant-name">Buffalo Burger</div>
+        <div class="restaurant-desc">Fresh & juicy burgers made just for you</div>
+      </a>
+
+      <a href="papajohns.html" class="restaurant-card">
+        <div class="restaurant-icon">
+          <i class="fas fa-pizza-slice"></i>
+        </div>
+        <div class="restaurant-name">Papa John's</div>
+        <div class="restaurant-desc">Better ingredients, better pizza</div>
+      </a>
+
+      <a href="kansas.html" class="restaurant-card">
+        <div class="restaurant-icon">
+          <i class="fas fa-drumstick-bite"></i>
+        </div>
+        <div class="restaurant-name">Kansas</div>
+        <div class="restaurant-desc">Kansas Fried Chicken - crispy and delicious</div>
+      </a>
+
+      <a href="arabiata.html" class="restaurant-card">
+        <div class="restaurant-icon">
+          <i class="fas fa-sun"></i>
+        </div>
+        <div class="restaurant-name">Arabiata</div>
+        <div class="restaurant-desc">Traditional Egyptian breakfast and cuisine</div>
+      </a>
+    </div>
+
+    <a href="choose (1).html" class="back-btn">
+      <i class="fas fa-arrow-left"></i>
+      Back to Location Selection
+    </a>
+  </div>
+
+</body>
+</html>

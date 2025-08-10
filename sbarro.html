@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sbarro - Italian Eatery</title>
+    <!-- Favicon: Ensure 'sparo_logo.jpg' is in your 'images' folder -->
+    <link rel="icon" href="images/sparo_logo.jpg" type="image/jpg" onerror="this.onerror=null;this.href='https://placehold.co/32x32/FF0000/FFFFFF?text=S';">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CRITICAL: Ensure 'css/sbarro.css' path is correct and the file exists -->
+    <link rel="stylesheet" href="css/sbarro.css"> 
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <!-- Header Section -->
+        <header class="sbarro-header">
+            <div class="container">
+                <div class="sbarro-logo-container">
+                    <!-- Logo: Ensure 'sparo_logo.jpg' is in your 'images' folder -->
+                    <img src="images/sparo_logo.jpg" alt="Sbarro Logo" class="sbarro-main-logo" onerror="this.onerror=null;this.src='https://placehold.co/100x70/FF0000/FFFFFF?text=Sbarro';">
+                    <span class="sbarro-shop-text">| ORDER</span>
+                </div>
+                <nav class="sbarro-nav">
+                    <ul>
+                        <li><a href="#" class="nav-link">HOME</a></li>
+                        <!-- ORDER link serves as a section jump -->
+                        <li><a href="#menu-section" class="nav-link" id="order-link">MENU</a></li>
+                        <!-- Shopping Cart link: Added ID to easily target in JS -->
+                        <li><a href="checkout.html" class="nav-link cart-link" id="checkout-cart-link" aria-label="View Shopping Cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count hidden">0</span>
+                        </a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Entry Background Section -->
+        <section class="sbarro-entry-background" style="background-image: url('images/SBBARO_ENTRY.jpg');">
+            <div class="entry-overlay">
+                <h1>Welcome to Sbarro</h1>
+                <p>Authentic New York Style Pizza and Italian Cuisine</p>
+                <a href="#menu-section" class="order-now-btn">Order Now</a>
+            </div>
+        </section>
+
+        <!-- Menu Section (visible by default) -->
+        <section class="menu-section" id="menu-section">
+            <div class="container menu-content-area">
+                <!-- Left Sidebar Navigation -->
+                <aside class="left-sidebar">
+                    <nav class="left-sidebar-nav">
+                        <ul>
+                            <li><a href="#pizzas" class="category-link" data-category="pizzas"><span class="category-icon-bg"><i class="fas fa-pizza-slice"></i></span> Pizzas <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+                            <li><a href="#stuffed-pizzas" class="category-link" data-category="stuffed-pizzas"><span class="category-icon-bg"><i class="fas fa-pizza-slice"></i></span> Stuffed Pizzas <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+                            <li><a href="#drinks" class="category-link" data-category="drinks"><span class="category-icon-bg"><i class="fas fa-soda-bottle"></i></span> Drinks <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <!-- Menu Items Display -->
+                <main class="menu-items-display">
+                    <!-- Pizzas Section -->
+                    <section class="menu-category" id="pizzas">
+                        <h2 class="category-title">Pizzas</h2>
+                        <div class="menu-grid">
+                            <div class="menu-item-card">
+                                <!-- Updated image path for higher quality -->
+                                <img src="images/chicken_ranch_pizza.jpg" alt="Chicken Ranch Pizza" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FF0000/FFFFFF?text=Chicken+Ranch+Pizza';">
+                                <div class="item-details">
+                                    <h3 class="item-name">Chicken Ranch Pizza</h3>
+                                    <p class="item-description">Creamy ranch base, tender chicken, and mozzarella cheese.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 220.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Chicken Ranch Pizza" data-item-price="220.00" data-item-image="images/chicken_ranch_pizza.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item-card">
+                                <!-- Updated image path for higher quality -->
+                                <img src="images/chicken_BBQ_pizza.jpg" alt="Chicken BBQ Pizza" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FF0000/FFFFFF?text=Chicken+BBQ+Pizza';">
+                                <div class="item-details">
+                                    <h3 class="item-name">Chicken BBQ Pizza</h3>
+                                    <p class="item-description">Zesty BBQ sauce, grilled chicken, and red onions, topped with mozzarella.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 220.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Chicken BBQ Pizza" data-item-price="220.00" data-item-image="images/chicken_BBQ_pizza.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Placeholder for more pizzas -->
+                            <div class="menu-item-card placeholder">
+                                <img src="https://placehold.co/200x150/f0f0f0/ccc?text=Coming+Soon" alt="Coming+Soon">
+                                <div class="item-details">
+                                    <h3 class="item-name">New Pizza Flavor</h3>
+                                    <p class="item-description">Keep an eye out for our exciting new pizza!</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price"></span>
+                                        <button class="add-to-cart-btn disabled"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Stuffed Pizzas Section -->
+                    <section class="menu-category" id="stuffed-pizzas">
+                        <h2 class="category-title">Stuffed Pizzas</h2>
+                        <div class="menu-grid">
+                            <div class="menu-item-card">
+                                <!-- Updated image path for higher quality -->
+                                <img src="images/ranchPIZZA.jpg" alt="Chicken Ranch Stuffed Pizza" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FF0000/FFFFFF?text=Chicken+Ranch+Stuffed+Pizza';">
+                                <div class="item-details">
+                                    <h3 class="item-name">Chicken Ranch Stuffed Pizza</h3>
+                                    <p class="item-description">Our delicious stuffed pizza with creamy ranch and chicken filling.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 158.00 - 294.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Chicken Ranch Stuffed Pizza" data-item-price="158.00" data-item-image="images/ranchPIZZA.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item-card">
+                                <!-- Updated image path for higher quality -->
+                                <img src="images/chicken_Stuffed_pizza.jpg" alt="Chicken & Pepperoni Stuffed Pizza" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FF0000/FFFFFF?text=Chicken+Pepperoni+Stuffed+Pizza';">
+                                <div class="item-details">
+                                    <h3 class="item-name">Chicken & Pepperoni Stuffed Pizza</h3>
+                                    <p class="item-description">A hearty stuffed pizza filled with chicken and savory pepperoni.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 158.00 - 294.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Chicken & Pepperoni Stuffed Pizza" data-item-price="158.00" data-item-image="images/chicken_Stuffed_pizza.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item-card">
+                                <!-- Updated image path for higher quality -->
+                                <img src="images/supremepizza.jpg" alt="Chicken & Broccoli Stuffed Pizza" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FF0000/FFFFFF?text=Chicken+Broccoli+Stuffed+Pizza';">
+                                <div class="item-details">
+                                    <h3 class="item-name">Chicken & Broccoli Stuffed Pizza</h3>
+                                    <p class="item-description">A flavorful stuffed pizza with tender chicken and fresh broccoli.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 158.00 - 294.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Chicken & Broccoli Stuffed Pizza" data-item-price="158.00" data-item-image="images/supremepizza.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Placeholder for more stuffed pizzas -->
+                            <div class="menu-item-card placeholder">
+                                <img src="https://placehold.co/200x150/f0f0f0/ccc?text=More+Stuffed+Coming" alt="Coming+Soon">
+                                <div class="item-details">
+                                    <h3 class="item-name">New Stuffed Pizza</h3>
+                                    <p class="item-description">Exciting new stuffed pizza flavors on the way!</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price"></span>
+                                        <button class="add-to-cart-btn disabled"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Drinks Section -->
+                    <section class="menu-category" id="drinks">
+                        <h2 class="category-title">Drinks</h2>
+                        <div class="menu-grid">
+                            <div class="menu-item-card">
+                                <img src="images/cola.jpg" alt="Coca-Cola" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FF0000/FFFFFF?text=Coca-Cola';">
+                                <div class="item-details">
+                                    <h3 class="item-name">Coca-Cola</h3>
+                                    <p class="item-description">Chilled Coca-Cola (330ml can).</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 25.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Coca-Cola" data-item-price="25.00" data-item-image="images/cola.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item-card">
+                                <img src="images/sprite.jpg" alt="Sprite" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FF0000/FFFFFF?text=Sprite';">
+                                <div class="item-details">
+                                    <h3 class="item-name">Sprite</h3>
+                                    <p class="item-description">Refreshing Sprite (330ml can).</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 25.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Sprite" data-item-price="25.00" data-item-image="images/sprite.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item-card">
+                                <img src="images/water.jpg" alt="Water" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FF0000/FFFFFF?text=Water';">
+                                <div class="item-details">
+                                    <h3 class="item-name">Water</h3>
+                                    <p class="item-description">Bottled mineral water.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 15.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Water" data-item-price="15.00" data-item-image="images/water.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Placeholder for more drinks -->
+                            <div class="menu-item-card placeholder">
+                                <img src="https://placehold.co/200x150/f0f0f0/ccc?text=Coming+Soon" alt="Coming+Soon">
+                                <div class="item-details">
+                                    <h3 class="item-name">New Drink</h3>
+                                    <p class="item-description">New refreshing drink coming soon!</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price"></span>
+                                        <button class="add-to-cart-btn disabled"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </section>
+    </div>
+
+    <!-- The confirmation message element -->
+    <div class="confirmation-message"></div>
+
+    <script src="js/sbarro.js"></script>
+</body>
+</html>

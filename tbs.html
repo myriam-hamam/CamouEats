@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TBS - The Bakery Shop</title>
+    <link rel="icon" href="images/tbs_logo.jpg" type="image/jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/tbs.css">
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <!-- Header Section -->
+        <header class="tbs-header">
+            <div class="container">
+                <div class="tbs-logo-container">
+                    <img src="images/tbs_logo.jpg" alt="TBS Logo" class="tbs-main-logo">
+                    <span class="tbs-shop-text">| SHOP</span>
+                </div>
+                <nav class="tbs-nav">
+                    <ul>
+                        <li><a href="#" class="nav-link">HOME</a></li>
+                        <!-- ORDER link is still here but now just serves as a section jump -->
+                        <li><a href="#menu-section" class="nav-link" id="order-link">ORDER</a></li>
+                        <!-- Shopping Cart link -->
+                        <li><a href="checkout.html" class="nav-link cart-link" aria-label="View Shopping Cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count hidden">0</span>
+                        </a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Promotional Banner Section (REMOVED 'hidden' class) -->
+        <section class="promo-banner" id="promo-banner-section">
+            <div class="promo-content">
+                <img src="images/Summer_Website.jpg" alt="Summer Website Promo" class="full-width-promo-image">
+            </div>
+        </section>
+
+        <!-- Menu Section (now visible by default) -->
+        <section class="menu-section" id="menu-section">
+            <div class="container menu-content-area">
+                <!-- Left Sidebar Navigation -->
+                <aside class="left-sidebar">
+                    <nav class="left-sidebar-nav">
+                        <ul>
+                            <li><a href="#iced-drinks" class="category-link" data-category="iced-drinks"><span class="category-icon-bg"><i class="fas fa-ice-cream"></i></span> Iced Drinks <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+                            <li><a href="#hot-drinks" class="category-link" data-category="hot-drinks"><span class="category-icon-bg"><i class="fas fa-mug-hot"></i></span> Hot Drinks <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+                            <li><a href="#wraps" class="category-link" data-category="wraps"><span class="category-icon-bg"><i class="fas fa-burrito"></i></span> Wraps <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+                            <li><a href="#sandwiches" class="category-link" data-category="sandwiches"><span class="category-icon-bg"><i class="fas fa-sandwich"></i></span> Sandwiches <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <!-- Menu Items Display -->
+                <main class="menu-items-display">
+                    <!-- Iced Drinks Section -->
+                    <section class="menu-category" id="iced-drinks">
+                        <h2 class="category-title">Iced Drinks</h2>
+                        <div class="menu-grid">
+                            <div class="menu-item-card">
+                                <img src="images/Caramel_Frappe.jpg" alt="Caramel Frappe">
+                                <div class="item-details">
+                                    <h3 class="item-name">Caramel Frappe</h3>
+                                    <p class="item-description">Rich caramel blended with ice and coffee, topped with whipped cream.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 95.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Caramel Frappe" data-item-price="95.00" data-item-image="images/Caramel_Frappe.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item-card">
+                                <img src="images/ced_white_mocha_tbs.jpg" alt="Iced White Mocha">
+                                <div class="item-details">
+                                    <h3 class="item-name">Iced White Mocha</h3>
+                                    <p class="item-description">Espresso, white chocolate sauce, milk, and ice, finished with whipped cream.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 105.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Iced White Mocha" data-item-price="105.00" data-item-image="images/ced_white_mocha_tbs.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item-card">
+                                <img src="images/Latte_Frappe.jpg" alt="Latte Frappe">
+                                <div class="item-details">
+                                    <h3 class="item-name">Latte Frappe</h3>
+                                    <p class="item-description">Classic latte flavors blended with ice for a refreshing treat.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 98.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Latte Frappe" data-item-price="98.00" data-item-image="images/Latte_Frappe.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Placeholder for more iced drinks -->
+                            <div class="menu-item-card placeholder">
+                                <img src="https://placehold.co/200x150/f0f0f0/ccc?text=Coming+Soon" alt="Coming+Soon">
+                                <div class="item-details">
+                                    <h3 class="item-name">New Iced Flavor</h3>
+                                    <p class="item-description">Keep an eye out for our exciting new beverage!</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price"></span>
+                                        <button class="add-to-cart-btn disabled"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hot Drinks Section -->
+                    <section class="menu-category" id="hot-drinks">
+                        <h2 class="category-title">Hot Drinks</h2>
+                        <div class="menu-grid">
+                            <div class="menu-item-card">
+                                <img src="images/Spanish_latte_tbs.jpg" alt="Spanish Latte">
+                                <div class="item-details">
+                                    <h3 class="item-name">Spanish Latte</h3>
+                                    <p class="item-description">A rich and creamy latte with a hint of condensed milk for sweetness.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 90.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Spanish Latte" data-item-price="90.00" data-item-image="images/Spanish_latte_tbs.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item-card">
+                                <img src="images/turkish_coffee.jpg" alt="Turkish Coffee">
+                                <div class="item-details">
+                                    <h3 class="item-name">Turkish Coffee</h3>
+                                    <p class="item-description">Traditional, finely ground coffee brewed to perfection.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 85.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Turkish Coffee" data-item-price="85.00" data-item-image="images/turkish_coffee.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item-card">
+                                <img src="images/Cappuccino_latte_Regular.jpg" alt="Cappuccino Latte Regular">
+                                <div class="item-details">
+                                    <h3 class="item-name">Cappuccino</h3>
+                                    <p class="item-description">Classic espresso with steamed milk and a deep layer of foam.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 92.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Cappuccino" data-item-price="92.00" data-item-image="images/Cappuccino_latte_Regular.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="menu-item-card">
+                                <img src="images/esspresso.jpg" alt="Espresso">
+                                <div class="item-details">
+                                    <h3 class="item-name">Espresso</h3>
+                                    <p class="item-description">A strong, concentrated coffee shot, perfect for a quick boost.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 88.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Espresso" data-item-price="88.00" data-item-image="images/esspresso.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Placeholder for more hot drinks -->
+                            <div class="menu-item-card placeholder">
+                                <img src="https://placehold.co/200x150/f0f0f0/ccc?text=Coming+Soon" alt="Coming+Soon">
+                                <div class="item-details">
+                                    <h3 class="item-name">New Hot Beverage</h3>
+                                    <p class="item-description">Discover our latest warm concoction!</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price"></span>
+                                        <button class="add-to-cart-btn disabled"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Wraps Section -->
+                    <section class="menu-category" id="wraps">
+                        <h2 class="category-title">Wraps</h2>
+                        <div class="menu-grid">
+                            <div class="menu-item-card">
+                                <img src="images/Sweet_Chili_Chicken_Wrap.jpg" alt="Sweet Chili Chicken Wrap">
+                                <div class="item-details">
+                                    <h3 class="item-name">Sweet Chili Chicken Wrap</h3>
+                                    <p class="item-description">Grilled chicken, fresh veggies, and sweet chili sauce wrapped in a soft tortilla.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 110.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Sweet Chili Chicken Wrap" data-item-price="110.00" data-item-image="images/Sweet_Chili_Chicken_Wrap.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item-card">
+                                <img src="images/Teryaki_Chicken_Wrap.jpg" alt="Teriyaki Chicken Wrap">
+                                <div class="item-details">
+                                    <h3 class="item-name">Teriyaki Chicken Wrap</h3>
+                                    <p class="item-description">Savory teriyaki chicken with crisp vegetables in a delicious wrap.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 115.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Teriyaki Chicken Wrap" data-item-price="115.00" data-item-image="images/Teryaki_Chicken_Wrap.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                             <!-- Placeholder for more wraps -->
+                            <div class="menu-item-card placeholder">
+                                <img src="https://placehold.co/200x150/f0f0f0/ccc?text=Coming+Soon" alt="Coming+Soon">
+                                <div class="item-details">
+                                    <h3 class="item-name">New Wrap Flavor</h3>
+                                    <p class="item-description">Exciting new wrap coming soon!</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price"></span>
+                                        <button class="add-to-cart-btn disabled"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Sandwiches Section -->
+                    <section class="menu-category" id="sandwiches">
+                        <h2 class="category-title">Sandwiches</h2>
+                        <div class="menu-grid">
+                            <div class="menu-item-card">
+                                <img src="images/TURKEY___CHEESE_sandwich.jpg" alt="Turkey & Cheese Sandwich">
+                                <div class="item-details">
+                                    <h3 class="item-name">Turkey & Cheese Sandwich</h3>
+                                    <p class="item-description">Classic turkey and cheese, fresh lettuce, and tomatoes on ciabatta bread.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 100.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Turkey & Cheese Sandwich" data-item-price="100.00" data-item-image="images/TURKEY___CHEESE_sandwich.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item-card">
+                                <img src="images/Roast_Beef_Sandwich.JPG" alt="Roast Beef Sandwich">
+                                <div class="item-details">
+                                    <h3 class="item-name">Roast Beef Sandwich</h3>
+                                    <p class="item-description">Tender roast beef with Swiss cheese and mustard on a whole wheat baguette.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 108.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Roast Beef Sandwich" data-item-price="108.00" data-item-image="images/Roast_Beef_Sandwich.JPG">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="menu-item-card">
+                                <img src="images/Roast_Beef_Bagel_sandwich.jpg" alt="Roast Beef Bagel Sandwich">
+                                <div class="item-details">
+                                    <h3 class="item-name">Roast Beef Bagel Sandwich</h3>
+                                    <p class="item-description">Savory roast beef, arugula, and cheese on a freshly baked bagel.</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price">EP 112.00</span>
+                                        <button class="add-to-cart-btn" data-item-name="Roast Beef Bagel Sandwich" data-item-price="112.00" data-item-image="images/Roast_Beef_Bagel_sandwich.jpg">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Placeholder for more sandwiches -->
+                            <div class="menu-item-card placeholder">
+                                <img src="https://placehold.co/200x150/f0f0f0/ccc?text=Coming+Soon" alt="Coming+Soon">
+                                <div class="item-details">
+                                    <h3 class="item-name">New Sandwich</h3>
+                                    <p class="item-description">Delicious new sandwich option arriving soon!</p>
+                                    <div class="item-price-add">
+                                        <span class="item-price"></span>
+                                        <button class="add-to-cart-btn disabled"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </main>
+            </div>
+        </section>
+    </div>
+
+    <!-- The confirmation message element -->
+    <div class="confirmation-message"></div>
+
+    <script src="js/tbs.js"></script>
+</body>
+</html>

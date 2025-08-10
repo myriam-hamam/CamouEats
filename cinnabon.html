@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinnabon | CampuEats</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/cinnabon.css">
+</head>
+<body>
+
+    <header class="cinnabon-header" id="home-section">
+        <div class="container">
+            <nav class="cinnabon-nav">
+                <a href="entry.html" class="nav-logo">
+                    <img src="images/cinnabon_logo.jpg" alt="Cinnabon Logo">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#home-section">HOME</a></li>
+                    <li><a href="#beverages">BEVERAGES</a></li>
+                    <li><a href="#handmade-treats">HANDMADE TREATS</a></li>
+                    <li><a href="#value-packs">VALUE PACKS</a></li>
+                </ul>
+                <div class="cart-icon-container">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-item-count-icon" class="cart-item-count-icon">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="new-bon-toppings-section">
+        <img src="images/cinnabon_pic.png" alt="New Bon Toppings" class="new-bon-toppings-image">
+    </div>
+
+    <main class="restaurant-main">
+        <div class="container">
+            <div class="menu-layout">
+                <div class="menu-section">
+                    <h2 id="value-packs">Value Packs</h2>
+                    <div id="value-packs-container" class="menu-items-grid">
+                        </div>
+
+                    <h2 id="handmade-treats">Handmade Treats</h2>
+                    <div id="handmade-treats-container" class="menu-items-grid">
+                        </div>
+
+                    <h2 id="beverages">Beverages</h2>
+                    <h3 id="hot-beverages">Hot Beverages</h3>
+                    <div id="hot-beverages-container" class="menu-items-grid">
+                        </div>
+
+                    <h3 id="cold-beverages">Cold Beverages</h3>
+                    <div id="cold-beverages-container" class="menu-items-grid">
+                        </div>
+                </div>
+
+                <div class="cart-section">
+                    <h2>Your Cart</h2>
+                    <div id="cart-items-container" class="cart-items">
+                        <p class="empty-cart-message">Your cart is empty.</p>
+                    </div>
+                    <div class="cart-summary">
+                        <span id="cart-item-count">0 items</span>
+                        <span id="cart-total-price">EGP 0.00</span>
+                    </div>
+                    <button id="checkout-button" class="checkout-btn" disabled>Checkout</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="cinnabon-footer">
+        <div class="container footer-content">
+            <div class="footer-column newsletter">
+                <h3>JOIN CINNABON'S NEWSLETTER</h3>
+                <p>To get instant updates about our new products and special promos!</p>
+            </div>
+            <div class="footer-column">
+                <h3>CUSTOMER SERVICE</h3>
+                <ul>
+                    <li>Delivery</li>
+                    <li>Privacy and Cookie Policy</li>
+                    <li>Terms and conditions</li>
+                    <li>About us</li>
+                    <li>Stores</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>MY ACCOUNT</h3>
+                <ul>
+                    <li>New products</li>
+                    <li>Best sales</li>
+                    <li>My account</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>CONTACT DETAILS</h3>
+                <p>
+                    <i class="fas fa-phone"></i> 16720
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/cinnabon.js"></script>
+</body>
+</html>

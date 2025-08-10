@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gyro – Campus Restaurant</title>
+    <!-- Favicon: Project logo on the web tab icon -->
+    <link rel="icon" href="images/CumpuEats_Logo.png" type="image/png">
+    <!-- Google Fonts for professional typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS for Gyro -->
+    <link rel="stylesheet" href="css/gyro.css">
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <!-- Header Section - Top bar matching the style -->
+        <header class="restaurant-header">
+            <!-- Background image for the banner handled by CSS -->
+            <div class="header-banner">
+                <div class="header-overlay"></div>
+            </div>
+            <div class="header-info-bar">
+                <div class="container">
+                    <div class="restaurant-details">
+                        <img src="images/gyro_logo.jpg" alt="Gyro Logo" class="restaurant-logo">
+                        <div class="details-text">
+                            <h1 class="restaurant-name">Gyro</h1>
+                            <p class="restaurant-meta">Greek , Fast Food , Sandwiches <span class="star-rating">★★★★★</span> 4.7 (125)</p>
+                            <p class="restaurant-address"><i class="fas fa-map-marker-alt"></i> Inside Campus</p>
+                        </div>
+                    </div>
+                    <!-- CampuEats Logo placed as per your drawing -->
+                    <div class="header-right-widgets">
+                        <img src="images/LOGO.JPG" alt="CampuEats Logo" class="campueats-logo">
+                        <div class="cart-icon-header" id="cartIconContainer">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Bar Below Header -->
+        <nav class="sub-navigation">
+            <div class="container">
+                <ul>
+                    <li><a href="#meals" class="category-link active">Menu</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div class="info-widgets">
+                    <span class="live-tracking"><i class="fas fa-circle"></i> Live tracking</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Promo Section (background image handled by CSS) -->
+        <section class="promo-section">
+            <div class="promo-overlay">
+                <h2>Taste the Real Gyro!</h2>
+                <p> Greek & Fast Food, delivered fresh to your building.</p>
+            </div>
+        </section>
+
+        <!-- Main Content Area - Layout with left nav, main dishes, right delivery -->
+        <main class="main-content-area container">
+            <aside class="left-sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="#meals" class="category-link active" data-category="meals">
+                            <div class="category-icon-bg"><i class="fas fa-utensils category-icon"></i></div>
+                            <span>MEALS</span>
+                            <i class="fas fa-chevron-right arrow-icon"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#burger" class="category-link" data-category="burger">
+                            <div class="category-icon-bg"><i class="fas fa-burger category-icon"></i></div>
+                            <span>BURGER</span>
+                            <i class="fas fa-chevron-right arrow-icon"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#picks" class="category-link" data-category="picks">
+                            <div class="category-icon-bg"><i class="fas fa-fire-alt category-icon"></i></div>
+                            <span>Picks for you 🔥</span>
+                            <i class="fas fa-chevron-right arrow-icon"></i>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+            <section class="menu-sections-wrapper">
+                <div class="menu-header-bar">
+                    <div class="search-bar-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" placeholder="Search for a dish" class="search-input" id="searchInput">
+                    </div>
+                    <a href="#" class="btn-scanned-menu">View Scanned Menu <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- MEALS Section -->
+                <div class="menu-category-section" id="meals">
+                    <h2 class="section-title">MEALS</h2>
+                    <div id="meals-menu-container" class="menu-items-grid">
+                         <!-- Placeholder items for MEALS -->
+                        <div class="menu-item-card" data-id="gyro-mix-meal" data-name="Gyro Mix Meal" data-price="120">
+                            <img src="images/Gyro_Mix_Meal.jpg" alt="Gyro Mix Meal">
+                            <div class="item-details">
+                                <h4 class="item-name">Gyro Mix Meal</h4>
+                                <p class="item-description">A delicious mix of chicken and beef gyro with rice and salad.</p>
+                                <div class="item-price-add">
+                                    <span class="item-price">120 EGP</span>
+                                    <button class="add-to-cart-btn" data-id="gyro-mix-meal"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item-card" data-id="strips-meal" data-name="Strips Meal" data-price="110">
+                            <img src="images/Strips_Meal.jpg" alt="Strips Meal">
+                            <div class="item-details">
+                                <h4 class="item-name">Strips Meal</h4>
+                                <p class="item-description">Crispy chicken strips with fries and your choice of dip.</p>
+                                <div class="item-price-add">
+                                    <span class="item-price">110 EGP</span>
+                                    <button class="add-to-cart-btn" data-id="strips-meal"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BURGER Section -->
+                <div class="menu-category-section" id="burger">
+                    <h2 class="section-title">BURGER</h2>
+                    <div id="burger-menu-container" class="menu-items-grid">
+                        <!-- Placeholder items for BURGER -->
+                        <div class="menu-item-card" data-id="classic-burger" data-name="Classic Burger" data-price="100">
+                            <img src="images/Classic_Burger.jpg" alt="Classic Burger">
+                            <div class="item-details">
+                                <h4 class="item-name">Classic Burger</h4>
+                                <p class="item-description">Beef patty with lettuce, tomato, onion, and signature sauce.</p>
+                                <div class="item-price-add">
+                                    <span class="item-price">100 EGP</span>
+                                    <button class="add-to-cart-btn" data-id="classic-burger"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item-card" data-id="cheeseburger" data-name="Cheeseburger" data-price="110">
+                            <img src="images/Cheeseburger.jpg" alt="Cheeseburger">
+                            <div class="item-details">
+                                <h4 class="item-name">Cheeseburger</h4>
+                                <p class="item-description">Classic beef patty with melted cheese, lettuce, and tomato.</p>
+                                <div class="item-price-add">
+                                    <span class="item-price">110 EGP</span>
+                                    <button class="add-to-cart-btn" data-id="cheeseburger"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Picks for you 🔥 Section -->
+                <div class="menu-category-section" id="picks">
+                    <h2 class="section-title">Picks for you 🔥</h2>
+                    <div id="picks-menu-container" class="menu-items-grid">
+                        <!-- Placeholder items for Picks for you -->
+                        <div class="menu-item-card" data-id="rizo-6" data-name="Rizo 6" data-price="95">
+                            <img src="images/Rizo6.jpg" alt="Rizo 6">
+                            <div class="item-details">
+                                <h4 class="item-name">Rizo 6</h4>
+                                <p class="item-description">Classic Rizo meal with special sauce and crispy chicken.</p>
+                                <div class="item-price-add">
+                                    <span class="item-price">95 EGP</span>
+                                    <button class="add-to-cart-btn" data-id="rizo-6"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item-card" data-id="buffalo-wings" data-name="Buffalo Sauce Wings" data-price="80">
+                            <img src="images/Buffalo_Sauce_Wings.jpg" alt="Buffalo Sauce Wings">
+                            <div class="item-details">
+                                <h4 class="item-name">Buffalo Sauce Wings</h4>
+                                <p class="item-description">Spicy and tangy buffalo wings, perfect as a starter.</p>
+                                <div class="item-price-add">
+                                    <span class="item-price">80 EGP</span>
+                                    <button class="add-to-cart-btn" data-id="buffalo-wings"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="right-sidebar-delivery">
+                <div class="delivery-box">
+                    <div class="delivery-icon-wrapper">
+                        <i class="fas fa-exclamation-circle delivery-icon"></i>
+                    </div>
+                    <p class="delivery-message" id="deliveryLocationMessage">Choose your delivery location</p>
+                    <button class="btn change-address-btn" id="changeAddressBtn">Change Address <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Cart Sidebar - This will slide in/out on click of the cart icon -->
+        <div class="cart-sidebar" id="cartSidebar">
+            <div class="cart-header">
+                <h2>Your Cart</h2>
+                <button type="button" class="close-cart-btn">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <p class="empty-cart-message">Your cart is empty.</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">0.00 EGP</span>
+                </div>
+                <button type="button" class="btn checkout-btn" id="checkoutBtn">
+                    Proceed to Checkout <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Campus Map Modal (Triggered by Change Address) -->
+        <div class="modal-overlay" id="mapModal">
+            <div class="modal-content map-modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Select Your Campus Location</h3>
+                    <span class="close-modal" id="closeMapModal">&times;</span>
+                </div>
+                <div class="map-image-container">
+                    <img src="images/Mapjpg.jpg" alt="Campus Map" class="campus-map-image">
+                    <!-- Building markers - position these relative to the image -->
+                    <button class="map-marker building-marker" data-building="R" data-name="Building R" style="top: 25%; left: 15%;">R</button>
+                    <button class="map-marker building-marker" data-building="S" data-name="Building S" style="top: 45%; left: 30%;">S</button>
+                    <button class="map-marker building-marker" data-building="N" data-name="Building N" style="top: 70%; left: 35%;">N</button>
+                    <button class="map-marker building-marker" data-building="Pharmacy" data-name="Pharmacy" style="top: 30%; left: 60%;">Pharmacy</button>
+                    <button class="map-marker building-marker" data-building="E" data-name="Building E" style="top: 25%; left: 80%;">E</button>
+                    <button class="map-marker building-marker" data-building="Main" data-name="Main Building" style="top: 55%; left: 90%;">Main</button>
+                    <button class="map-marker building-marker" data-building="B" data-name="Building B" style="top: 70%; left: 70%;">B</button>
+                </div>
+                <div class="selected-location-display" id="selectedLocationDisplay">
+                    No building selected.
+                </div>
+                <button class="btn confirm-location-btn" id="confirmLocationBtn" disabled>Confirm Location</button>
+            </div>
+        </div>
+
+        <!-- Generic Custom Modal (for other alerts like empty cart) -->
+        <div class="modal-overlay" id="custom-modal">
+            <div class="modal-content">
+                <h3 class="modal-title" id="modal-title"></h3>
+                <p class="modal-message" id="modal-message"></p>
+                <button class="modal-btn" id="modal-ok-btn">OK</button>
+            </div>
+        </div>
+
+        <!-- Minimal Footer -->
+        <footer class="site-footer">
+            <div class="container">
+                <p>&copy; 2025 Gyro. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- The JavaScript for the app logic -->
+    <script src="js/gyro.js"></script>
+
+</body>
+</html>

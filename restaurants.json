@@ -1,0 +1,223 @@
+[
+    {
+        "id": "tbs",
+        "name": "The Bakery Shop",
+        "logo": "images/tbs_logo.jpg",
+        "deliveryTime": "40-55 mins",
+        "primaryColor": "#4A3728",
+        "description": "Freshly baked goods and premium coffee.",
+        "menuPage": "restaurant.html?id=tbs",
+        "homepage": "entry.html",
+        "menu": [
+            { "id": "caramel-frappe", "name": "Caramel Frappe", "description": "Rich caramel blended with ice and coffee.", "price": 95.00, "image": "images/tbs/Caramel_Frappe.jpg", "category": "iced-drinks" },
+            { "id": "iced-white-mocha", "name": "Iced White Mocha", "description": "Espresso, white chocolate, milk, and ice.", "price": 105.00, "image": "images/tbs/iced_white_mocha_tbs.jpg", "category": "iced-drinks" },
+            { "id": "latte-frappe", "name": "Latte Frappe", "description": "Classic latte flavors blended with ice.", "price": 98.00, "image": "images/tbs/Latte_Frappe.jpg", "category": "iced-drinks" },
+            { "id": "spanish-latte", "name": "Spanish Latte", "description": "Creamy latte with condensed milk.", "price": 90.00, "image": "images/tbs/Spanish_latte_tbs.jpg", "category": "hot-drinks" },
+            { "id": "turkish-coffee", "name": "Turkish Coffee", "description": "Traditional, finely ground coffee.", "price": 85.00, "image": "images/tbs/turkish_coffee.jpg", "category": "hot-drinks" },
+            { "id": "cappuccino", "name": "Cappuccino", "description": "Espresso, steamed milk, deep foam.", "price": 92.00, "image": "images/tbs/Cappuccino_latte_Regular.jpg", "category": "hot-drinks" },
+            { "id": "espresso", "name": "Espresso", "description": "A strong, concentrated coffee shot.", "price": 88.00, "image": "images/tbs/esspresso.jpg", "category": "hot-drinks" },
+            { "id": "sweet-chili-chicken-wrap", "name": "Sweet Chili Chicken Wrap", "description": "Grilled chicken, veggies, sweet chili.", "price": 110.00, "image": "images/tbs/Sweet_Chili_Chicken_Wrap.jpg", "category": "wraps" },
+            { "id": "teriyaki-chicken-wrap", "name": "Teriyaki Chicken Wrap", "description": "Savory teriyaki chicken with crisp vegetables.", "price": 115.00, "image": "images/tbs/Teryaki_Chicken_Wrap.jpg", "category": "wraps" },
+            { "id": "turkey-cheese-sandwich", "name": "Turkey & Cheese Sandwich", "description": "Classic turkey and cheese, fresh lettuce, and tomatoes on ciabatta bread.", "price": 100.00, "image": "images/tbs/TURKEY___CHEESE_sandwich.jpg", "category": "sandwiches" },
+            { "id": "roast-beef-sandwich", "name": "Roast Beef Sandwich", "description": "Tender roast beef with Swiss cheese and mustard on a whole wheat baguette.", "price": 108.00, "image": "images/tbs/Roast_Beef_Sandwich.JPG", "category": "sandwiches" },
+            { "id": "roast-beef-bagel-sandwich", "name": "Roast Beef Bagel Sandwich", "description": "Savory roast beef, arugula, and cheese on a freshly baked bagel.", "price": 112.00, "image": "images/tbs/Roast_Beef_Bagel_sandwich.jpg", "category": "sandwiches" }
+        ]
+    },
+    {
+        "id": "cinnabon",
+        "name": "Cinnabon",
+        "logo": "images/cinnabon_logo.jpg",
+        "deliveryTime": "20-30 mins",
+        "primaryColor": "#794300",
+        "description": "World famous cinnamon rolls and treats.",
+        "menuPage": "restaurant.html?id=cinnabon",
+        "homepage": "entry.html",
+        "menu": [
+            { "id": "classic-roll-4pk", "name": "Classic Roll 4-Pack", "description": "Four signature cinnamon rolls", "price": 280.00, "image": "images/cinnabon/classic_roll_4pack.jpg", "category": "value-packs" },
+            { "id": "minibon-6pk", "name": "MiniBon 6-Pack", "description": "Six mini cinnamon rolls", "price": 200.00, "image": "images/cinnabon/minibon_6pack.jpg", "category": "value-packs" },
+            { "id": "classic-roll", "name": "Classic Roll", "description": "Our signature cinnamon roll with cream cheese frosting", "price": 80.00, "image": "images/cinnabon/classic_roll.jpg", "category": "handmade-treats" },
+            { "id": "pecanbon", "name": "Caramel Pecanbon", "description": "Classic roll topped with pecans and caramel frosting", "price": 95.00, "image": "images/cinnabon/pecanbon.jpg", "category": "handmade-treats" },
+            { "id": "hot-coffee", "name": "Hot Coffee", "description": "Freshly brewed hot coffee", "price": 40.00, "image": "images/cinnabon/hot_coffee.jpg", "category": "hot-beverages" }
+        ]
+    },
+    {
+        "id": "sbarro",
+        "name": "Sbarro",
+        "logo": "images/sbarro_logo.jpg",
+        "deliveryTime": "30-45 mins",
+        "primaryColor": "#E30713",
+        "description": "Authentic New York style pizza.",
+        "menuPage": "restaurant.html?id=sbarro",
+        "homepage": "entry.html",
+        "menu": [
+            { "id": "supreme-pizza", "name": "Supreme Pizza", "description": "Pepperoni, sausage, mushrooms, bell peppers, onions.", "price": 180.00, "image": "images/sbarro/supremepizza.jpg", "category": "pizzas" },
+            { "id": "chicken-ranch-pizza", "name": "Chicken Ranch Pizza", "description": "Chicken, ranch sauce, mozzarella, onions.", "price": 170.00, "image": "images/sbarro/chicken_ranch_pizza.jpg", "category": "pizzas" },
+            { "id": "cola", "name": "Cola", "description": "Refreshing cola drink.", "price": 30.00, "image": "images/sbarro/cola.jpg", "category": "beverages" }
+        ]
+    },
+    {
+        "id": "gyro",
+        "name": "Gyro King",
+        "logo": "images/gyro_logo.jpg",
+        "deliveryTime": "35-50 mins",
+        "primaryColor": "#FFD700",
+        "description": "Authentic Greek gyros and Mediterranean dishes.",
+        "menuPage": "restaurant.html?id=gyro",
+        "homepage": "entry.html",
+        "menu": [
+            { "id": "chicken-gyro", "name": "Chicken Gyro", "description": "Marinated chicken, lettuce, tomato, tzatziki sauce in pita bread.", "price": 120.00, "image": "images/gyro/chicken_gyro.jpg", "category": "wraps" },
+            { "id": "beef-gyro-plate", "name": "Beef Gyro Plate", "description": "Sliced beef gyro meat served with rice and salad.", "price": 150.00, "image": "images/gyro/beef_gyro_plate.jpg", "category": "main-courses" },
+            { "id": "fries", "name": "Fries", "description": "Crispy golden french fries.", "price": 45.00, "image": "images/gyro/fries.jpg", "category": "sides" }
+        ]
+    },
+    {
+        "id": "ashraf",
+        "name": "Ashraf's Grill",
+        "logo": "images/ashraf_logo.jpg",
+        "deliveryTime": "45-60 mins",
+        "primaryColor": "#8B0000",
+        "description": "Traditional Egyptian grill and BBQ.",
+        "menuPage": "restaurant.html?id=ashraf",
+        "homepage": "entry.html",
+        "menu": [
+            { "id": "kofta-platter", "name": "Kofta Platter", "description": "Grilled minced meat kofta with tahini and rice.", "price": 180.00, "image": "images/ashraf/kofta.jpg", "category": "main-courses" },
+            { "id": "molokhia", "name": "Molokhia with Chicken", "description": "Traditional Egyptian green soup with tender chicken.", "price": 130.00, "image": "images/ashraf/molokhia.jpg", "category": "main-courses" },
+            { "id": "rice-pudding", "name": "Rice Pudding", "description": "Sweet rice pudding, a classic Egyptian dessert.", "price": 60.00, "image": "images/ashraf/rice_pudding.jpg", "category": "desserts" }
+        ]
+    },
+    {
+        "id": "mycorner",
+        "name": "My Corner Cafe",
+        "logo": "images/mycorner_logo.jpg",
+        "deliveryTime": "20-35 mins",
+        "primaryColor": "#6B8E23",
+        "description": "Cozy cafe with a variety of light meals and beverages.",
+        "menuPage": "restaurant.html?id=mycorner",
+        "homepage": "entry.html",
+        "menu": [
+            { "id": "chicken-pesto-sandwich", "name": "Chicken Pesto Sandwich", "description": "Grilled chicken, pesto, mozzarella on focaccia bread.", "price": 90.00, "image": "images/mycorner/chicken_pesto.jpg", "category": "sandwiches" },
+            { "id": "iced-latte", "name": "Iced Latte", "description": "Espresso with cold milk over ice.", "price": 65.00, "image": "images/mycorner/iced_latte.jpg", "category": "iced-drinks" },
+            { "id": "chocolate-muffin", "name": "Chocolate Muffin", "description": "Rich chocolate muffin, perfect with coffee.", "price": 40.00, "image": "images/mycorner/chocolate_muffin.jpg", "category": "desserts" }
+        ]
+    },
+    {
+        "id": "rtogo",
+        "name": "R.T.O. Go",
+        "logo": "images/rtogo_logo.jpg",
+        "deliveryTime": "25-40 mins",
+        "primaryColor": "#FF5733",
+        "description": "Quick and fresh takeaways.",
+        "menuPage": "restaurant.html?id=rtogo",
+        "homepage": "entry.html",
+        "menu": [
+            { "id": "chicken-caesar-salad", "name": "Chicken Caesar Salad", "description": "Grilled chicken, romaine, croutons, parmesan, Caesar dressing.", "price": 100.00, "image": "images/rtogo/caesar_salad.jpg", "category": "salads" },
+            { "id": "tuna-wrap", "name": "Tuna Wrap", "description": "Tuna salad with fresh vegetables wrapped in a tortilla.", "price": 85.00, "image": "images/rtogo/tuna_wrap.jpg", "category": "wraps" }
+        ]
+    },
+    {
+        "id": "papajohns",
+        "name": "Papa John's Pizza",
+        "logo": "images/papajohns_logo.jpg",
+        "deliveryTime": "30-45 mins",
+        "primaryColor": "#006440",
+        "description": "Better Ingredients. Better Pizza. Papa John's.",
+        "menuPage": "restaurant.html?id=papajohns",
+        "homepage": "entry.html",
+        "menu": [
+            { "id": "pepperoni-pizza", "name": "Pepperoni Pizza", "description": "Classic pepperoni pizza with our signature sauce and mozzarella.", "price": 190.00, "image": "images/papajohns/pepperoni_pizza.jpg", "category": "pizzas" },
+            { "id": "chicken-bbq-pizza", "name": "Chicken BBQ Pizza", "description": "Grilled chicken, BBQ sauce, onions, and mozzarella cheese.", "price": 200.00, "image": "images/papajohns/chicken_bbq_pizza.jpg", "category": "pizzas" },
+            { "id": "garlic-knots", "name": "Garlic Knots", "description": "Freshly baked garlic knots with dipping sauce.", "price": 60.00, "image": "images/papajohns/garlic_knots.jpg", "category": "sides" }
+        ]
+    },
+    {
+        "id": "mcdo",
+        "name": "McDonald's",
+        "logo": "images/mcdo_logo.jpg",
+        "deliveryTime": "25-35 mins",
+        "primaryColor": "#FFC72C",
+        "description": "Your favorite burgers and fries.",
+        "menuPage": "restaurant.html?id=mcdo",
+        "homepage": "entry.html",
+        "menu": [
+            { "id": "big-mac", "name": "Big Mac", "description": "Two 100% beef patties, special sauce, lettuce, cheese, pickles, onions on a sesame seed bun.", "price": 150.00, "image": "images/mcdo/big_mac.jpg", "category": "burgers" },
+            { "id": "mcchicken", "name": "McChicken", "description": "Crispy chicken patty, shredded lettuce, and mayonnaise on a toasted sesame seed bun.", "price": 100.00, "image": "images/mcdo/mcchicken.jpg", "category": "burgers" },
+            { "id": "fries-large", "name": "Large Fries", "description": "Our world famous fries, crispy and golden.", "price": 60.00, "image": "images/mcdo/fries.jpg", "category": "sides" },
+            { "id": "coke", "name": "Coca-Cola", "description": "Refreshing Coca-Cola.", "price": 30.00, "image": "images/mcdo/coke.jpg", "category": "beverages" }
+        ]
+    },
+    {
+        "id": "kfc",
+        "name": "KFC",
+        "logo": "images/kfc_logo.jpg",
+        "deliveryTime": "30-45 mins",
+        "primaryColor": "#E4002B",
+        "description": "It's Finger Lickin' Good.",
+        "menuPage": "restaurant.html?id=kfc",
+        "homepage": "entry.html",
+        "menu": [
+            { "id": "zinger-burger", "name": "Zinger Burger", "description": "Spicy Zinger fillet, lettuce, and mayo in a sesame bun.", "price": 130.00, "image": "images/kfc/zinger_burger.jpg", "category": "burgers" },
+            { "id": "fried-chicken-2pc", "name": "2 PC Chicken Meal", "description": "Two pieces of original recipe chicken with fries and a drink.", "price": 160.00, "image": "images/kfc/fried_chicken_2pc.jpg", "category": "fried-chicken" },
+            { "id": "coleslaw", "name": "Coleslaw", "description": "Creamy coleslaw.", "price": 40.00, "image": "images/kfc/coleslaw.jpg", "category": "sides" }
+        ]
+    },
+    {
+        "id": "kansas",
+        "name": "Kansas Fried Chicken",
+        "logo": "images/kansas_logo.jpg",
+        "deliveryTime": "35-50 mins",
+        "primaryColor": "#FF6B00",
+        "description": "Crispy fried chicken with a unique taste.",
+        "menuPage": "restaurant.html?id=kansas",
+        "homepage": "entry.html",
+        "menu": [
+            { "id": "chicken-strips", "name": "Chicken Strips", "description": "Tender chicken strips with your choice of dipping sauce.", "price": 110.00, "image": "images/kansas/chicken_strips.jpg", "category": "fried-chicken" },
+            { "id": "spicy-chicken-burger", "name": "Spicy Chicken Burger", "description": "Spicy fried chicken patty, lettuce, tomato, and special sauce.", "price": 120.00, "image": "images/kansas/spicy_chicken_burger.jpg", "category": "burgers" },
+            { "id": "mashed-potatoes", "name": "Mashed Potatoes", "description": "Creamy mashed potatoes with gravy.", "price": 50.00, "image": "images/kansas/mashed_potatoes.jpg", "category": "sides" }
+        ]
+    },
+    {
+        "id": "buffalo",
+        "name": "Buffalo Burger",
+        "logo": "images/buffalo_logo.jpg",
+        "deliveryTime": "40-55 mins",
+        "primaryColor": "#A0522D",
+        "description": "Gourmet burgers and hot dogs.",
+        "menuPage": "restaurant.html?id=buffalo",
+        "homepage": "entry.html",
+        "menu": [
+            { "id": "buffalo-burger", "name": "Buffalo Burger", "description": "Signature beef patty, cheese, lettuce, tomato, special sauce.", "price": 160.00, "image": "images/buffalo/buffalo_burger.jpg", "category": "burgers" },
+            { "id": "chili-dog", "name": "Chili Dog", "description": "Hot dog topped with savory chili and cheese.", "price": 100.00, "image": "images/buffalo/chili_dog.jpg", "category": "sandwiches" },
+            { "id": "onion-rings", "name": "Onion Rings", "description": "Crispy onion rings served with dipping sauce.", "price": 55.00, "image": "images/buffalo/onion_rings.jpg", "category": "sides" }
+        ]
+    },
+    {
+        "id": "blbn",
+        "name": "BLBN Bistro",
+        "logo": "images/blbn_logo.jpg",
+        "deliveryTime": "30-45 mins",
+        "primaryColor": "#005691",
+        "description": "Modern bistro offering diverse international cuisine.",
+        "menuPage": "restaurant.html?id=blbn",
+        "homepage": "entry.html",
+        "menu": [
+            { "id": "grilled-salmon", "name": "Grilled Salmon", "description": "Pan-seared salmon fillet with asparagus and lemon butter sauce.", "price": 250.00, "image": "images/blbn/grilled_salmon.jpg", "category": "main-courses" },
+            { "id": "pasta-primavera", "name": "Pasta Primavera", "description": "Fresh pasta with seasonal vegetables in a light cream sauce.", "price": 140.00, "image": "images/blbn/pasta_primavera.jpg", "category": "main-courses" },
+            { "id": "chocolate-lava-cake", "name": "Chocolate Lava Cake", "description": "Warm chocolate cake with a molten center, served with vanilla ice cream.", "price": 80.00, "image": "images/blbn/chocolate_lava_cake.jpg", "category": "desserts" }
+        ]
+    },
+    {
+        "id": "arabiata",
+        "name": "Arabiata",
+        "logo": "images/arabiata_logo.jpg",
+        "deliveryTime": "20-35 mins",
+        "primaryColor": "#CC2936",
+        "description": "Fast and casual Italian pasta.",
+        "menuPage": "restaurant.html?id=arabiata",
+        "homepage": "entry.html",
+        "menu": [
+            { "id": "penne-arabiata", "name": "Penne Arabiata", "description": "Penne pasta with spicy tomato sauce.", "price": 95.00, "image": "images/arabiata/penne_arabiata.jpg", "category": "main-courses" },
+            { "id": "fettuccine-alfredo", "name": "Fettuccine Alfredo", "description": "Fettuccine pasta with creamy Alfredo sauce.", "price": 110.00, "image": "images/arabiata/fettuccine_alfredo.jpg", "category": "main-courses" },
+            { "id": "garlic-bread", "name": "Garlic Bread", "description": "Toasted bread with garlic butter.", "price": 40.00, "image": "images/arabiata/garlic_bread.jpg", "category": "sides" }
+        ]
+    }
+]

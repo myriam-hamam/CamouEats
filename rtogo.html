@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R-Togo | CampuEats</title>
+    <link rel="icon" href="images/CumpuEats_Logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/rtogo.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="entry.html" class="logo">
+            <img src="images/CumpuEats_Logo.png" alt="CampuEats Logo">
+        </a>
+        <div class="menu">
+            <a href="checkout.html" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-badge" class="cart-badge">0</span>
+            </a>
+        </div>
+    </nav>
+    
+    <main class="main-content">
+        <div class="restaurant-hero">
+            <img src="images/mycorner-cover.jpg" alt="R-Togo Restaurant Cover">
+            <div class="hero-details">
+                <h1>R-Togo</h1>
+                <p>Burgers, Sandwiches, Wraps</p>
+            </div>
+        </div>
+
+        <div class="content-container">
+            <div class="menu-sections">
+                <section id="burgers" class="menu-category">
+                    <h2>Burgers</h2>
+                    <div class="menu-items-list">
+                        <div class="menu-item-card" data-name="Mushroom and Cheese Burger" data-price="95.00">
+                            <img src="images/Mushroom_and_Cheese_Burge.jpg" alt="Mushroom and Cheese Burger">
+                            <div class="item-details">
+                                <h3>Mushroom and Cheese Burger</h3>
+                                <p class="item-description">Juicy beef patty, sautéed mushrooms, and melted cheese.</p>
+                                <div class="item-footer">
+                                    <span class="item-price">EGP 95.00</span>
+                                    <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="sandwiches" class="menu-category">
+                    <h2>Sandwiches</h2>
+                    <div class="menu-items-list">
+                        <div class="menu-item-card" data-name="Roast Beef Sandwich" data-price="80.00">
+                            <img src="images/Roast_Beef_Sandwich.JPG" alt="Roast Beef Sandwich">
+                            <div class="item-details">
+                                <h3>Roast Beef Sandwich</h3>
+                                <p class="item-description">Thinly sliced roast beef with fresh vegetables on a ciabatta bun.</p>
+                                <div class="item-footer">
+                                    <span class="item-price">EGP 80.00</span>
+                                    <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="wraps" class="menu-category">
+                    <h2>Wraps</h2>
+                    <div class="menu-items-list">
+                        <div class="menu-item-card" data-name="Teriyaki Chicken Wrap" data-price="75.00">
+                            <img src="images/Teryaki_Chicken_Wrap.jpg" alt="Teriyaki Chicken Wrap">
+                            <div class="item-details">
+                                <h3>Teriyaki Chicken Wrap</h3>
+                                <p class="item-description">Grilled chicken in a sweet teriyaki sauce with crisp lettuce and veggies.</p>
+                                <div class="item-footer">
+                                    <span class="item-price">EGP 75.00</span>
+                                    <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <div id="cart-summary" class="cart-summary">
+                <h2>Your Cart</h2>
+                <div id="cart-items" class="cart-items">
+                    <p class="empty-cart-message">Your cart is empty.</p>
+                </div>
+                <div class="cart-totals">
+                    <div class="cart-total-line">
+                        <span>Subtotal:</span>
+                        <span>EGP <span id="cart-subtotal">0.00</span></span>
+                    </div>
+                    <div class="cart-total-line">
+                        <span>Delivery Fee:</span>
+                        <span>EGP <span id="cart-delivery">0.00</span></span>
+                    </div>
+                    <div class="cart-total-line total-price">
+                        <span>Total:</span>
+                        <span>EGP <span id="cart-total">0.00</span></span>
+                    </div>
+                </div>
+                <a href="checkout.html" id="checkout-btn" class="checkout-btn">Proceed to Checkout</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CampuEats. All Rights Reserved.</p>
+    </footer>
+
+    <script src="js/rtogo.js"></script>
+
+</body>
+</html>

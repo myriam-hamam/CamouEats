@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampuEats Login</title>
+    <!-- Favicon: Project logo on the web tab icon -->
+    <link rel="icon" href="images/CumpuEats_Logo.png" type="image/png">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="css/login.css">
+    <!-- Google Fonts for professional typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="logo"><i class="fas fa-utensils"></i></div>
+        <h2>Login to CampuEats</h2>
+        <!-- The form action will be handled by JavaScript upon successful validation -->
+        <form id="loginForm" action="#" method="post">
+            <!-- Email Input -->
+            <input 
+                type="email" 
+                name="email" 
+                id="loginEmail" 
+                placeholder="Enter your MIU email">
+            <span class="error-message" id="emailError"></span>
+
+            <!-- Password Input -->
+            <input 
+                type="password" 
+                name="password" 
+                id="loginPassword" 
+                placeholder="Enter your password">
+            <span class="error-message" id="passwordError"></span>
+
+            <input type="submit" value="Login">
+        </form>
+
+        <div class="register-link">
+            Don't have an account?
+            <a href="signup.html">Sign Up</a>
+        </div>
+    </div>
+
+    <!-- Link to the JavaScript file for validation -->
+    <script src="js/login.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+/* about.css - Specific styles for the About Us page */
+
+/* About Hero Section */
+.about-hero {
+    background-color: #4CAF50; /* A pleasant green */
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+    margin-top: 60px; /* To account for fixed navbar */
+}
+
+.about-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: white; /* Ensure heading is white */
+}
+
+.about-hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Mission & Vision Section */
+.mission-vision {
+    padding: 60px 20px;
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+.mission-vision .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mission-vision .card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    flex: 1;
+    min-width: 300px;
+    max-width: 45%;
+    transition: transform 0.3s ease;
+}
+
+.mission-vision .card:hover {
+    transform: translateY(-8px);
+}
+
+.mission-vision h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #4CAF50;
+}
+
+.mission-vision p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Our Story Section */
+.our-story {
+    padding: 60px 20px;
+    text-align: left;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.our-story h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.our-story p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+/* Our Team Section */
+.our-team {
+    padding: 60px 20px;
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+.our-team .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.our-team h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.team-member-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.team-member-card:hover {
+    transform: translateY(-8px);
+}
+
+.team-member-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #4CAF50;
+}
+
+.team-member-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    color: #343a40;
+}
+
+.team-member-card p {
+    font-size: 0.95rem;
+    color: #777;
+}
+
+/* Responsive adjustments for about.css */
+@media (max-width: 768px) {
+    .about-hero h1 {
+        font-size: 2.5rem;
+    }
+    .about-hero p {
+        font-size: 1rem;
+    }
+    .mission-vision .card {
+        max-width: 100%; /* Stack cards on smaller screens */
+    }
+    .our-story h2, .our-team h2 {
+        font-size: 2rem;
+    }
+    .team-member-card {
+        width: 100%; /* Full width on small screens */
+    }
+}

@@ -1,0 +1,747 @@
+/* General Body and Container Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f0f2f5; /* Lighter, subtle background for app feel */
+    color: #333;
+    line-height: 1.6;
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.tbs-header {
+    background-color: #ffffff; /* White background for a clean look */
+    border-bottom: 1px solid #e0e0e0; /* Softer border */
+    padding: 15px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* More pronounced shadow */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure header is on top */
+}
+
+.tbs-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tbs-logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.tbs-main-logo {
+    height: 55px; /* Slightly larger logo */
+    width: auto;
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Clearer logo shadow */
+}
+
+.tbs-shop-text {
+    margin-left: 12px; /* Increased spacing */
+    font-size: 1.6em; /* Slightly larger font */
+    font-weight: 700;
+    color: #e74c3c; /* Retained vibrant red accent */
+    letter-spacing: 0.5px; /* Slight letter spacing */
+}
+
+.tbs-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px; /* Increased spacing between nav items */
+}
+
+.tbs-nav .nav-link {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    font-size: 1.15em; /* Slightly larger font */
+    padding: 8px 0; /* More padding */
+    position: relative;
+    transition: color 0.3s ease, transform 0.2s ease; /* Added transform for subtle hover */
+}
+
+.tbs-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px; /* Thicker underline */
+    background-color: #e74c3c;
+    transition: width 0.3s ease;
+    border-radius: 2px; /* Rounded underline */
+}
+
+.tbs-nav .nav-link:hover,
+.tbs-nav .nav-link.active {
+    color: #e74c3c;
+    transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+.tbs-nav .nav-link:hover::after,
+.tbs-nav .nav-link.active::after {
+    width: 100%;
+}
+
+/* Cart Link Specific Styling */
+.tbs-nav .cart-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: #e74c3c;
+    font-size: 1.5em; /* Larger cart icon */
+    padding: 5px; /* Padding around icon */
+    border-radius: 8px; /* Rounded background for icon */
+    transition: background-color 0.2s ease;
+}
+
+.tbs-nav .cart-link:hover {
+    background-color: #f5f5f5; /* Light background on hover */
+}
+
+.tbs-nav .cart-link .cart-count {
+    background-color: #4CAF50; /* Green for count, stands out */
+    color: #fff;
+    font-size: 0.75em; /* Slightly larger count */
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 3px 7px; /* More balanced padding */
+    position: absolute;
+    top: -10px; /* Adjusted position */
+    right: -10px; /* Adjusted position */
+    min-width: 22px; /* Ensures circle even for single digit */
+    height: 22px; /* Makes it a perfect circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Shadow for pop effect */
+}
+
+.tbs-nav .cart-link .cart-count.hidden {
+    display: none;
+}
+
+
+/* Promotional Banner (if ever re-enabled) */
+.promo-banner {
+    padding: 0;
+    text-align: center;
+    overflow: hidden;
+    margin-bottom: 40px;
+    background-color: #ffffff; /* Consistent background */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1); /* Stronger shadow for banner */
+    border-radius: 15px; /* Fully rounded */
+}
+
+.promo-banner.hidden {
+    display: none;
+}
+
+.full-width-promo-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px; /* Image inherits container rounding */
+    object-fit: cover;
+}
+
+/* Menu Section Layout */
+.menu-section {
+    padding: 40px 0; /* More vertical padding */
+    background-color: #f0f2f5; /* Matches body background */
+    min-height: 80vh;
+}
+
+.menu-section.hidden {
+    display: none;
+}
+
+.menu-content-area {
+    display: flex;
+    gap: 35px; /* Increased gap */
+    align-items: flex-start;
+}
+
+/* Left Sidebar Navigation */
+.left-sidebar {
+    flex: 0 0 280px; /* Slightly wider sidebar */
+    background-color: #ffffff;
+    padding: 25px; /* More padding */
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08); /* Deeper shadow */
+    position: sticky;
+    top: 90px; /* Adjusted top position, considering header height */
+    align-self: flex-start;
+    max-height: calc(100vh - 110px); /* Adjust based on header/footer */
+    overflow-y: auto; /* Enable scrolling for many categories */
+}
+
+.left-sidebar-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.left-sidebar-nav li {
+    margin-bottom: 12px; /* More space between items */
+}
+
+.left-sidebar-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #666; /* Softer text color */
+    padding: 15px 18px; /* More generous padding */
+    border-radius: 10px; /* More rounded */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    font-weight: 500;
+    font-size: 1.05em; /* Slightly larger text */
+}
+
+.left-sidebar-nav a:hover {
+    background-color: #ffe8e6; /* Very light red background on hover */
+    color: #e74c3c;
+    transform: translateX(5px); /* Subtle slide effect */
+}
+
+.left-sidebar-nav a.active {
+    background-color: #e74c3c; /* Solid red for active */
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3); /* Shadow for active state */
+}
+
+.left-sidebar-nav a .category-icon-bg {
+    background-color: #f9f9f9; /* Lighter background for icons */
+    color: #e74c3c;
+    border-radius: 50%;
+    width: 40px; /* Larger icon circle */
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 18px; /* More space */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 1.2em; /* Larger icon itself */
+}
+
+.left-sidebar-nav a:hover .category-icon-bg {
+    background-color: #fff; /* White icon background on hover */
+    color: #e74c3c;
+}
+
+.left-sidebar-nav a.active .category-icon-bg {
+    background-color: #fff; /* White icon background for active */
+    color: #e74c3c; /* Red icon color for active */
+}
+
+.left-sidebar-nav a .arrow-icon {
+    margin-left: auto;
+    font-size: 0.9em;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+.left-sidebar-nav a.active .arrow-icon {
+    transform: rotate(90deg);
+    opacity: 1; /* More opaque when active */
+    color: #fff; /* White arrow when active */
+}
+
+/* Menu Items Display */
+.menu-items-display {
+    flex: 1;
+    min-width: 0; /* Allows content to shrink */
+}
+
+.menu-category {
+    margin-bottom: 40px;
+    padding-top: 20px;
+    display: none; /* Hide categories by default */
+}
+
+.menu-category.active {
+    display: block; /* Only active category is displayed */
+}
+
+.category-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5em; /* Larger title */
+    color: #333; /* Darker title for prominence */
+    margin-bottom: 30px; /* More space below title */
+    text-align: left; /* Align title left */
+    position: relative;
+    padding-bottom: 15px; /* More padding below title */
+    font-weight: 700;
+}
+
+.category-title::after {
+    content: '';
+    position: absolute;
+    left: 0; /* Align underline to left */
+    bottom: 0;
+    width: 100px; /* Longer underline */
+    height: 5px; /* Thicker underline */
+    background-color: #e74c3c;
+    border-radius: 3px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Larger min-width for cards */
+    gap: 30px; /* Increased gap between cards */
+}
+
+.menu-item-card {
+    background-color: #ffffff;
+    border-radius: 15px; /* More rounded */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* Deeper, softer shadow */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item-card:hover {
+    transform: translateY(-8px); /* More pronounced lift */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* Even deeper shadow on hover */
+}
+
+.menu-item-card img {
+    width: 100%;
+    height: 220px; /* Slightly taller images */
+    object-fit: cover;
+    border-bottom: 1px solid #f0f0f0; /* Softer border */
+}
+
+.menu-item-card .item-details {
+    padding: 20px; /* More padding inside card */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item-card .item-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5em; /* Larger item name */
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 10px; /* More space */
+    font-weight: 600; /* Bolder */
+}
+
+.menu-item-card .item-description {
+    font-size: 1em; /* Standard font size */
+    color: #777; /* Softer description color */
+    margin-bottom: 20px; /* More space */
+    flex-grow: 1;
+}
+
+.menu-item-card .item-price-add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px; /* Adjusted margin */
+}
+
+.menu-item-card .item-price {
+    font-size: 1.6em; /* Larger, bolder price */
+    font-weight: 700;
+    color: #e74c3c;
+    letter-spacing: -0.5px; /* Tighter letter spacing for price */
+}
+
+.menu-item-card .add-to-cart-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px; /* Larger button */
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4em; /* Larger plus icon */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25); /* Stronger shadow */
+}
+
+.menu-item-card .add-to-cart-btn:hover {
+    background-color: #c0392b;
+    transform: scale(1.1); /* Pop effect */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3); /* Stronger shadow on hover */
+}
+
+.menu-item-card .add-to-cart-btn.disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.7;
+    transform: none;
+}
+
+/* Placeholder card styles */
+.menu-item-card.placeholder {
+    opacity: 0.6;
+    box-shadow: none;
+    border: 2px dashed #d0d0d0; /* More visible dashed border */
+    text-align: center;
+    background-color: #fefefe;
+}
+
+.menu-item-card.placeholder .item-name {
+    color: #a0a0a0;
+}
+
+.menu-item-card.placeholder .item-description {
+    color: #c0c0c0;
+}
+
+/* Confirmation Message Box */
+.confirmation-message {
+    position: fixed;
+    bottom: 30px; /* Higher from bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 15px 25px; /* More padding */
+    border-radius: 10px; /* More rounded */
+    font-size: 1.1em; /* Slightly larger text */
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease; /* Slower transition */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25); /* Deeper shadow */
+    text-align: center;
+    min-width: 250px; /* Ensures good size */
+}
+
+.confirmation-message.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* --- Checkout Page Specific Styles (Moved from checkout.html) --- */
+/* This section styles the checkout.html page, using a consistent aesthetic */
+
+.checkout-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.checkout-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.checkout-header img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.checkout-header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2em;
+    color: #e74c3c;
+    margin: 0;
+}
+
+.checkout-header p {
+    font-size: 1.1em;
+    color: #666;
+    margin: 5px 0 0;
+}
+
+.section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6em;
+    color: #333;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.order-item .item-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 1px solid #ddd;
+}
+
+.order-item .item-details {
+    flex-grow: 1;
+}
+
+.order-item .item-details h4 {
+    margin: 0 0 5px;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.order-item .item-details p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #888;
+}
+
+.order-item .item-total-price {
+    font-weight: bold;
+    color: #e74c3c;
+    font-size: 1.1em;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid #f0f0f0;
+}
+
+.summary-row.total {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #e74c3c;
+    border-top: 2px solid #e74c3c;
+    margin-top: 15px;
+    padding-top: 20px;
+}
+
+.place-order-btn, .home-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 25px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.place-order-btn:hover, .home-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.place-order-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.order-confirmation {
+    text-align: center;
+    padding: 50px 20px;
+    display: none; /* Hidden by default */
+}
+
+.order-confirmation h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #4CAF50; /* Green for success */
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.order-confirmation p {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.empty-checkout {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.empty-checkout h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2em;
+    color: #e74c3c;
+    margin-bottom: 15px;
+}
+
+.empty-checkout p {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.empty-checkout a {
+    color: #e74c3c;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .menu-content-area {
+        flex-direction: column; /* Stack sidebar and main content */
+        gap: 20px;
+    }
+
+    .left-sidebar {
+        width: 100%; /* Full width for sidebar */
+        position: static; /* Remove sticky on smaller screens */
+        top: auto;
+    }
+
+    .tbs-header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .tbs-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .checkout-container {
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .checkout-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .checkout-header img {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+
+    .tbs-main-logo {
+        height: 40px;
+    }
+
+    .tbs-shop-text {
+        font-size: 1.2em;
+    }
+
+    .tbs-nav .nav-link {
+        font-size: 1em;
+    }
+
+    .category-title {
+        font-size: 1.8em;
+        text-align: center; /* Center title on small screens */
+    }
+    .category-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .checkout-header h1 {
+        font-size: 1.8em;
+    }
+
+    .checkout-header p {
+        font-size: 1em;
+    }
+
+    .order-item .item-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .order-item .item-details h4 {
+        font-size: 1em;
+    }
+
+    .order-item .item-details p {
+        font-size: 0.8em;
+    }
+
+    .order-item .item-total-price {
+        font-size: 1em;
+    }
+
+    .summary-line {
+        font-size: 0.9em;
+    }
+
+    .summary-line.total-line h3 {
+        font-size: 1.3em;
+    }
+
+    .place-order-btn, .home-btn {
+        font-size: 1.1em;
+        padding: 12px;
+    }
+
+    .order-confirmation-message h2, .empty-checkout h2 {
+        font-size: 2em;
+    }
+
+    .order-confirmation-message p, .empty-checkout p {
+        font-size: 1em;
+    }
+
+    /* Small screen adjustment for sidebar items */
+    .left-sidebar-nav a {
+        padding: 12px 10px;
+        font-size: 0.95em;
+    }
+    .left-sidebar-nav a .category-icon-bg {
+        width: 30px;
+        height: 30px;
+        font-size: 1em;
+        margin-right: 10px;
+    }
+}
